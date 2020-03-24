@@ -3,12 +3,12 @@
 
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
-    std::cout << "Hello World!\n";
-    std::cout << "Hello World!\n";
-    std::cout << "Hello World!\n";
-    std::cout << "Hello World!\n";
+    cout << "Bienvenue sur Balkard...\n";
+
 
     return 0;
 }
