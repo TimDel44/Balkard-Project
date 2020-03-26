@@ -3,7 +3,17 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <algorithm>
+#include <iomanip>
+#include <stdlib.h>
 #include "personnage.h"
+
 
 using namespace std;
 
@@ -19,9 +29,36 @@ int main()
 
     personnage* player2 = new personnage("DHB");
 
+    for (int i = 0; i < 10; i++) {
 
-    player1->afficher();
-    player2->afficher();
+        player1->afficher();
+
+        printf("\n------------------------------------------------------------------------\n");
+
+        player2->afficher();
+
+
+        player1->attaquer(player2);
+
+        printf("\n\n\n");
+
+        player1->afficher();
+
+        printf("\n------------------------------------------------------------------------\n");
+
+        player2->afficher();
+
+
+        player2->attaquer(player1);
+
+        printf("\n\n\n");
+
+        player1->afficher();
+
+        printf("\n------------------------------------------------------------------------\n");
+
+        player2->afficher();
+    }
 
 
     return 0;

@@ -1,6 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <algorithm>
+#include <iomanip>
+
 using namespace std;
 
 class personnage
@@ -38,5 +47,7 @@ public :
 
 	personnage(string nom);
 	void afficher();
+	void attaquer(personnage*);
+	void subir(int degats);
 };
 
