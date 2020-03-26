@@ -18,7 +18,7 @@ private :
 
 
 public :
-	std::string getNom() { return this->nom; }
+	string getNom() { return this->nom; }
 	int getVie() { return this->vie; }
 	int getAttaque() { return this->attaque; }
 	int getDefense() { return this->defense; }
@@ -27,7 +27,7 @@ public :
 	int getEsquive() { return this->esquive; }
 	int getPA() { return this->pa; }
 
-	std::string setNom(std::string nom) { this->nom = nom; }
+	string setNom(string nom) { this->nom = nom; }
 	int setVie(int vie) {this->vie = vie; }
 	int setAttaque(int attaque) {this->attaque = attaque; }
 	int setDefense(int defense) {this->defense = defense; }

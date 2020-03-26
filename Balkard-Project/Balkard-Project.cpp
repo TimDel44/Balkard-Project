@@ -12,13 +12,16 @@ int main()
     cout << "Bienvenue sur Balkard...\n" << endl;
 
     string nom;
-    cout << "entrez le nom du joueur\n" << endl;
+    cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
 
     personnage* player1 = new personnage(nom);
 
+    personnage* player2 = new personnage("DHB");
+
 
     player1->afficher();
+    player2->afficher();
 
 
     return 0;

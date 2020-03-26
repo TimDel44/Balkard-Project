@@ -21,9 +21,15 @@
     <ClCompile Include="personnage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="joueur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="personnage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="joueur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
