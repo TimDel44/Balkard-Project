@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
 #include <string>
+using namespace std;
 
 class personnage
 {
 private :
-	std::string nom;
+	string nom;
 	int vie;
 	int attaque;
 	int defense;
@@ -35,5 +36,7 @@ public :
 	int setEsquive(int esquive) {this->esquive = esquive; }
 	int setPA(int pa) {this->pa = pa; }
 
+	personnage(string nom);
+	void afficher();
 };
 
