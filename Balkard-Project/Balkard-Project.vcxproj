@@ -148,9 +148,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
+    <ClCompile Include="carteElixir.cpp" />
+    <ClCompile Include="cartePotion.cpp" />
+    <ClCompile Include="carteSort.cpp" />
     <ClCompile Include="personnage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="carteElixir.h" />
+    <ClInclude Include="cartePotion.h" />
+    <ClInclude Include="carteSort.h" />
     <ClInclude Include="personnage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
