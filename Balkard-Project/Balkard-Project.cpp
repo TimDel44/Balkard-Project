@@ -2,12 +2,23 @@
 //
 
 #include <iostream>
+#include <string>
+#include "personnage.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Bienvenue sur Balkard...\n";
+    cout << "Bienvenue sur Balkard...\n" << endl;
+
+    string nom;
+    cout << "entrez le nom du joueur\n" << endl;
+    cin >> nom;
+
+    personnage* player1 = new personnage(nom);
+
+
+    player1->afficher();
 
 
     return 0;
