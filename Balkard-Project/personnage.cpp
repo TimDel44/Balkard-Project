@@ -45,9 +45,15 @@ void personnage::attaquer(personnage* cible) {
 	cout << "\n" << this->nom << " se prepare a attaquer !\n" << endl;
 	Sleep(5000);
 	cout << this->nom << " a fait un jet d'attaque de " << jetAttaque << endl;
+	int jetCritique = rand() % 101;
 	if (jetAttaque != 0) {
-
-		cible->subir(this->attaque + jetAttaque);
+		if (jetCritique > 89) {
+			cout << "\n" << this->nom << " a fait un fait un coup critique ! Degats doubles !" << endl;
+			cible->subir(this->attaque*1.25 + jetAttaque*1.25);
+		}
+		else {
+			cible->subir(this->attaque + jetAttaque);
+		}
 	}
 	else
 	{
@@ -87,7 +93,7 @@ void personnage::initierCombat(personnage* cible) {
 }
 
 void personnage::combat(personnage* cible) {
-	for (int i = 0; i < 10; i++) {
+	while(this->vie > 0 and cible->vie>0) {
 
 		this->afficher();
 
@@ -101,4 +107,11 @@ void personnage::combat(personnage* cible) {
 		printf("\n\n\n");
 	}
 
+	printf("\n\n\n");
+
+	this->afficher();
+
+	printf("\n------------------------------------------------------------------------\n");
+
+	cible->afficher();
 }
