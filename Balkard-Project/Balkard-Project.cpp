@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
+#include "carteArgent.h"
+#include <ctime>
 
 using namespace std;
 
@@ -14,12 +16,11 @@ int main()
     string nom;
     cout << "entrez le nom du joueur\n" << endl;
     cin >> nom;
-
+    
     personnage* player1 = new personnage(nom);
 
-
     player1->afficher();
-
+    
 
     return 0;
 

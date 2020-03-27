@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
+    <ClCompile Include="carteArgent.cpp" />
     <ClCompile Include="personnage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="carteArgent.h" />
     <ClInclude Include="personnage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
