@@ -49,5 +49,8 @@ public :
 	void afficher();
 	void attaquer(personnage*);
 	void subir(int degats);
+	int jetInitierCombat();
+	void initierCombat(personnage*);
+	void combat(personnage*);
 };
 

@@ -19,6 +19,7 @@ using namespace std;
 
 int main()
 {
+    srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
 
     string nom;
@@ -29,36 +30,7 @@ int main()
 
     personnage* player2 = new personnage("DHB");
 
-    for (int i = 0; i < 10; i++) {
-
-        player1->afficher();
-
-        printf("\n------------------------------------------------------------------------\n");
-
-        player2->afficher();
-
-
-        player1->attaquer(player2);
-
-        printf("\n\n\n");
-
-        player1->afficher();
-
-        printf("\n------------------------------------------------------------------------\n");
-
-        player2->afficher();
-
-
-        player2->attaquer(player1);
-
-        printf("\n\n\n");
-
-        player1->afficher();
-
-        printf("\n------------------------------------------------------------------------\n");
-
-        player2->afficher();
-    }
+    player1->combat(player2);
 
 
     return 0;

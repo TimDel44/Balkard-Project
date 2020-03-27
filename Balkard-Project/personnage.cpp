@@ -41,9 +41,8 @@ void personnage::afficher() {
 }
 
 void personnage::attaquer(personnage* cible) {
-	srand(time(NULL));
 	int jetAttaque = rand() % 7;
-	cout << this->nom << " se prepare a attaquer !\n" << endl;
+	cout << "\n" << this->nom << " se prepare a attaquer !\n" << endl;
 	Sleep(5000);
 	cout << this->nom << " a fait un jet d'attaque de " << jetAttaque << endl;
 	if (jetAttaque != 0) {
@@ -57,7 +56,6 @@ void personnage::attaquer(personnage* cible) {
 }
 
 void personnage::subir(int degats) {
-	srand(time(NULL));
 	int jetEsquive = rand() % 7;
 	cout << "\n" << this->nom << " a fait un jet d'esquive de " << jetEsquive << endl;
 	if (jetEsquive + this->esquive < degats) {
@@ -68,4 +66,39 @@ void personnage::subir(int degats) {
 	else {
 		cout << this->nom << " a esquive l'attaque !" << endl;
 	}
+}
+
+int personnage::jetInitierCombat() {
+	int jetInitiative = rand() % 7;
+	cout << "\n" << this->nom << " a fait un jet d'initiative de " << jetInitiative << endl;
+	return jetInitiative + this->initiative;
+}
+
+void personnage::initierCombat(personnage* cible) {	
+	if (this->jetInitierCombat() > cible->jetInitierCombat() ) {
+		this->attaquer(cible);
+		cible->attaquer(this);
+	}
+	else {
+		cible->attaquer(this);
+		this->attaquer(cible);
+	}
+
+}
+
+void personnage::combat(personnage* cible) {
+	for (int i = 0; i < 10; i++) {
+
+		this->afficher();
+
+		printf("\n------------------------------------------------------------------------\n");
+
+		cible->afficher();
+
+
+		this->initierCombat(cible);
+
+		printf("\n\n\n");
+	}
+
 }
