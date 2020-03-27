@@ -153,6 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="joueur.h" />
+    <ClCompile Include="carteArgent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="carteArgent.h" />
     <ClInclude Include="personnage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
