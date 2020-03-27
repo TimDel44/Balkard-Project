@@ -3,24 +3,37 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <algorithm>
+#include <iomanip>
+#include <stdlib.h>
 #include "personnage.h"
 #include "carteArgent.h"
 #include <ctime>
+
 
 using namespace std;
 
 int main()
 {
+    srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
 
     string nom;
-    cout << "entrez le nom du joueur\n" << endl;
+    cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
     
     personnage* player1 = new personnage(nom);
 
-    player1->afficher();
-    
+    personnage* player2 = new personnage("DHB");
+
+    player1->combat(player2);
+
 
     return 0;
 

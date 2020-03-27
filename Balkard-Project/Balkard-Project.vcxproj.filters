@@ -21,6 +21,7 @@
     <ClCompile Include="personnage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="joueur.cpp">
     <ClCompile Include="carteArgent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -29,6 +30,7 @@
     <ClInclude Include="personnage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="joueur.h">
     <ClInclude Include="carteArgent.h">
       <Filter>Header Files</Filter>
     </ClInclude>

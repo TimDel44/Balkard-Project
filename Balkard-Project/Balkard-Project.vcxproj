@@ -148,8 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
-    <ClCompile Include="carteArgent.cpp" />
+    <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="joueur.h" />
+    <ClCompile Include="carteArgent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carteArgent.h" />
