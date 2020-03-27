@@ -18,3 +18,8 @@ public:
 
 };
 
+/*dans le main : 
+	srand(time(NULL));
+    int valeur = rand() % 90 + 10;
+	carte_argent->afficher();
+*/

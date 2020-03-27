@@ -12,18 +12,15 @@ using namespace std;
 int main()
 {
     cout << "Bienvenue sur Balkard...\n" << endl;
-    srand(time(NULL));
-    int valeur = rand() % 90 + 10;
+
     string nom;
     cout << "entrez le nom du joueur\n" << endl;
     cin >> nom;
     
-    carteArgent* carte_argent = new carteArgent(valeur);
     personnage* player1 = new personnage(nom);
 
-
     player1->afficher();
-    carte_argent->afficher();
+    
 
     return 0;
 
