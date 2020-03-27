@@ -5,5 +5,7 @@ using namespace std;
 
 class joueur
 {
+	int actif;
+	int persoVivant;
 };
 
