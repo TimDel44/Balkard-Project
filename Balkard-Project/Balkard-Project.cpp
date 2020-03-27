@@ -13,6 +13,8 @@
 #include <iomanip>
 #include <stdlib.h>
 #include "personnage.h"
+#include "carteArgent.h"
+#include <ctime>
 
 
 using namespace std;
@@ -25,7 +27,7 @@ int main()
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
-
+    
     personnage* player1 = new personnage(nom);
 
     personnage* player2 = new personnage("DHB");
