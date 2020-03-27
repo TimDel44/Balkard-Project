@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include "personnage.h"
+#include "carteElixir.h"
+#include "cartePotion.h"
+#include "carteSort.h"
 
 using namespace std;
 
