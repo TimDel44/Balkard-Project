@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
-class cartePotion
+#include "carte.h"
+
+class cartePotion : public carte
 {
 private:
     int alteration;

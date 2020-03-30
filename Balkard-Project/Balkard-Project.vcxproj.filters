@@ -30,6 +30,9 @@
     <ClCompile Include="carteSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="carte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="personnage.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="carteSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="carte.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

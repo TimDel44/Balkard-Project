@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
-class carteElixir
+#include "carte.h"
+
+class carteElixir : public carte
 {
 private:
     int alteration;
