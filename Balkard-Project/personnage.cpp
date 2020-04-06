@@ -97,7 +97,7 @@ void personnage::combat(personnage* cible) {
 
 		this->afficher();
 
-		printf("\n------------------------------------------------------------------------\n");
+		printf("\n---------------------------------------------\n");
 
 		cible->afficher();
 
@@ -111,7 +111,7 @@ void personnage::combat(personnage* cible) {
 
 	this->afficher();
 
-	printf("\n------------------------------------------------------------------------\n");
+	printf("\n------------------------------------------------------\n");
 
 	cible->afficher();
 }

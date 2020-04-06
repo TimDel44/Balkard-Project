@@ -12,9 +12,11 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdlib.h>
+#include <ctime>
+
 #include "personnage.h"
 #include "carteArgent.h"
-#include <ctime>
+#include "joueur.h"
 
 
 using namespace std;
@@ -27,12 +29,14 @@ int main()
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
-    
-    personnage* player1 = new personnage(nom);
 
-    personnage* player2 = new personnage("DHB");
+    personnage* perso1 = new personnage(nom);
+    joueur* player1 = new joueur(perso1);
+    player1->afficherJoueur();
 
-    player1->combat(player2);
+    personnage* perso2 = new personnage("DHB");
+
+    perso1->combat(perso2);
 
 
     return 0;
