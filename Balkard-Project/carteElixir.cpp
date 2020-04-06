@@ -8,5 +8,5 @@ carteElixir::carteElixir(string nom, string nomStat, string niveau, int a, int s
 
 void carteElixir::afficher()
 {
-	cout << "" << this->getNom() << "" << this->nomStat << "" << this->niveau << endl;
+	cout << this->getNom() << this->nomStat << this->niveau << endl;
 }
