@@ -8,6 +8,7 @@
 #include "carteElixir.h"
 #include "cartePotion.h"
 #include "carteSort.h"
+#include "rituel.h"
 #include "carte.h"
 
 #include <cstdlib>
