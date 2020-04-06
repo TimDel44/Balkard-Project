@@ -156,7 +156,6 @@ void joueur::clear() {
 	SetConsoleCursorPosition(console, topLeft);
 }
 
-}
 
 /*void joueur::choisirCarte() {
 	this->cartesPioche;

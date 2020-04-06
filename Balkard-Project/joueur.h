@@ -23,7 +23,6 @@ private:
 	int persoVivant;
 	personnage* perso;
 	int argent;
-	vector<int> main;
 	int possedeSort;
 	int possedeRituel;
 	int possedeItem;
