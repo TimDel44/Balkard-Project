@@ -23,16 +23,26 @@ private:
 	personnage* perso;
 	int argent;
 	vector<int> main;
+	int possedeSort;
+	int possedeRituel;
+	int possedeItem;
+
 public:
 
 	int getActif() { return this->actif; }
 	int getPersoVivant() { return this->persoVivant; }
 	int getArgent() { return this->argent; }
+	int getPossedeSort() { return this->possedeSort; }
+	int getPossedeRituel() { return this->possedeRituel; }
+	int getPossedeItem() { return this->possedeSort; }
 
-	int setArgent() { this->argent = argent; }
-	int setActif() { this->actif = actif; }
-	int setPersoVivant() { this->persoVivant = persoVivant; }
-	int setPersonnage(personnage* perso) { this->perso = perso; }
+	void setArgent() { this->argent = argent; }
+	void setActif() { this->actif = actif; }
+	void setPersoVivant() { this->persoVivant = persoVivant; }
+	void setPersonnage(personnage* perso) { this->perso = perso; }
+	void setPossedeSort() { this->possedeSort = possedeSort; }
+	void setPossedeRituel() { this->possedeRituel = possedeRituel; }
+	void setPossedeItem() { this->possedeItem = possedeItem; }
 
 	joueur(personnage* perso);
 	void afficherJoueur();
@@ -42,4 +52,6 @@ public:
 	int jetInitierCombat();
 	void initierCombat(joueur*);
 	void clear();
+	void finDeCombat(joueur*);
+	void debutDeCombat(joueur*);
 };

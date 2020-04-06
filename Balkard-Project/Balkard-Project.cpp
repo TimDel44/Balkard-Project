@@ -47,6 +47,7 @@ int main()
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
+    system("cls");
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);

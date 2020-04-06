@@ -19,6 +19,9 @@ joueur::joueur(personnage* perso) {
 	this->persoVivant = 1;
 	this->perso = perso;
 	this->argent = 0;
+	this->possedeRituel = 0;
+	this->possedeSort = 0;
+	this->possedeItem = 0;
 }
 
 void joueur::afficherJoueur() {
@@ -52,6 +55,12 @@ void joueur::joueurCombat(joueur* cible) {
 void joueur::attaquer(joueur* cible) {
 	int jetAttaque = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " se prepare a attaquer !\n" << endl;
+	if (this->possedeSort == 1) {
+
+		cout << "\n jouez une carte Sort" << endl;
+		//>> cin
+
+	}
 	Sleep(5000);
 	cout << this->perso->getNom() << " a fait un jet d'attaque de " << jetAttaque << endl;
 	int jetCritique = rand() % 101;
@@ -91,16 +100,44 @@ int joueur::jetInitierCombat() {
 }
 
 void joueur::initierCombat(joueur* cible) {
+	debutDeCombat(cible);
 	if (this->jetInitierCombat() > cible->jetInitierCombat()) {
 		this->attaquer(cible);
 		cible->attaquer(this);
+		finDeCombat(cible);
 	}
 	else {
 		cible->attaquer(this);
 		this->attaquer(cible);
+		finDeCombat(cible);
 	}
 
 }
+
+void joueur::finDeCombat(joueur* cible) {
+	cout << "\n End Phase" << endl;
+	if (this->possedeRituel == 1) {
+
+		cout << "\n jouez une carte Rituel" << endl;
+		//>> cin
+
+	}
+	cout << "\n fin du tour" << endl;
+	Sleep(5000);
+}
+void joueur::debutDeCombat(joueur* cible) {
+	cout << "Starting Phase" << endl;
+		if (this->possedeItem == 1) {
+
+			cout << "\n jouez une carte Item" << endl;
+			//>> cin
+
+		}
+}
+
+
+
+
 
 void joueur::clear() {
 	COORD topLeft = { 0, 0 };
