@@ -4,26 +4,46 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "personnage.h"
+
 #include "carteElixir.h"
 #include "cartePotion.h"
 #include "carteSort.h"
 #include "carte.h"
 
+#include <cstdlib>
+#include <ctime>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <algorithm>
+#include <iomanip>
+#include <stdlib.h>
+#include <ctime>
+
+#include "personnage.h"
+#include "carteArgent.h"
+#include "joueur.h"
+
+
 using namespace std;
 
 int main()
 {
-   /* cout << "Bienvenue sur Balkard...\n" << endl;
+
+    srand(time(NULL));
+    cout << "Bienvenue sur Balkard...\n" << endl;
 
     string nom;
-    cout << "entrez le nom du joueur\n" << endl;
+    cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
 
-    personnage* player1 = new personnage(nom);
+    personnage* perso1 = new personnage(nom);
+    joueur* player1 = new joueur(perso1);
+    player1->afficherJoueur();
 
+    personnage* perso2 = new personnage("DHB");
 
-    player1->afficher();
+    perso1->combat(perso2);
 
 
     return 0;*/

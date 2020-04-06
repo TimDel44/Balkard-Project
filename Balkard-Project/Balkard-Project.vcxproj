@@ -148,17 +148,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
+
     <ClCompile Include="carte.cpp" />
     <ClCompile Include="carteElixir.cpp" />
     <ClCompile Include="cartePotion.cpp" />
     <ClCompile Include="carteSort.cpp" />
-    <ClCompile Include="personnage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
     <ClInclude Include="carteElixir.h" />
     <ClInclude Include="cartePotion.h" />
     <ClInclude Include="carteSort.h" />
+    <ClCompile Include="joueur.cpp" />
+    <ClCompile Include="personnage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="joueur.h" />
+    <ClCompile Include="carteArgent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="carteArgent.h" />
     <ClInclude Include="personnage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
