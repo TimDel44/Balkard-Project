@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <ctime>
 #include "personnage.h"
+#include "Deck.h"
 using namespace std;
 
 class joueur
@@ -22,7 +23,8 @@ private:
 	int persoVivant;
 	personnage* perso;
 	int argent;
-	vector<int> main;
+	vector<carte*> main;
+	
 public:
 
 	int getActif() { return this->actif; }
@@ -41,4 +43,7 @@ public:
 	void subir(int degats);
 	int jetInitierCombat();
 	void initierCombat(joueur*);
+
+	void choisirCarte();
+	void afficherMain();
 };
