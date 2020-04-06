@@ -9,5 +9,7 @@ carte::carte(string nom)
 	this->nom = nom;
 }
 
-void carte::afficher() {
+void carte::afficher() 
+{
 	cout << " nom : " << this->getNom() << endl;
+}

@@ -3,16 +3,18 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "personnage.h"
 #include "carteElixir.h"
 #include "cartePotion.h"
 #include "carteSort.h"
+#include "carte.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Bienvenue sur Balkard...\n" << endl;
+   /* cout << "Bienvenue sur Balkard...\n" << endl;
 
     string nom;
     cout << "entrez le nom du joueur\n" << endl;
@@ -24,8 +26,9 @@ int main()
     player1->afficher();
 
 
-    return 0;
-
+    return 0;*/
+    vector<carte*> cartes;
+    cartes.push_back(new cartePotion("potion",1,2));
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

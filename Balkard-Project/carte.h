@@ -5,15 +5,16 @@ using namespace std;
 
 class carte
 {
-private:
+protected:
 	string nom;
 
 public:
 	string getNom() { return this->nom; }
 	string setNom(std::string nom) { this->nom = nom; }
 
-	nom(string nom);
+	carte(string nom);
 
-	void afficher();
+	virtual void afficher();
+	virtual ~carte();
 };
 

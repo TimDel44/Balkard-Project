@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include "carte.h"
+#include <string>
+using namespace std;
 
 class cartePotion : public carte
 {
@@ -10,12 +12,12 @@ private:
 
 public:
    
-    int getAlteration() { return this->alteration; }
+   /* int getAlteration() { return this->alteration; }
     int getStatistique() { return this->statistique; }
     void setAlteration(int alteration) { this->alteration = alteration; }
     void setStatistique(int statistique) { this->statistique = statistique; }
-
-    cartePotion(int alteration, int statistique);
+    */
+    cartePotion(string nom, int a, int s);
 
 };
 
