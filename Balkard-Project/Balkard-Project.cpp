@@ -52,17 +52,6 @@ int main()
     //perso1->combat(perso2);
 
     return 0;
-    int a = 0;
-    int s = 0;
-    vector<carte*> cartes;
-    cartes.push_back(new cartePotion("PotionVieII", 2, 1));
-    cartes.push_back(new carteElixir("ElixirAttI", 1, 2));
-    cartes.push_back(new cartePotion("PotionDefIII", 3, 3));
-
-    cartes[0]->afficher();
-    cartes[1]->afficher();
-    cartes[2]->afficher();
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
