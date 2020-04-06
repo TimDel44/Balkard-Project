@@ -48,9 +48,6 @@ void deck() {
     for (i = 0; i < cartes.size() + 1; i++) {
         cartes[i]->afficher();
     }
-    for (i = 0; i < cartes.size() + 1; i++) {
-        delete cartes[i];
-    }
 }
 
 int main()

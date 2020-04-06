@@ -37,8 +37,8 @@ void deck() {
     int valeur = rand() % 90 + 10;
     int nbdecarte;
     vector<carte*> cartes;
-    for (a = 0; a < 4; a++) {
-        for (nbdecarte = 0; nbdecarte < 11-(11%(a+1)); nbdecarte++) {
+    for (a = 0; a < 4 + 1; a++) {
+        for (nbdecarte = 0; nbdecarte < 11-(11%a); nbdecarte++) {
             for (s = 0; s < 8; s++) {
                 cartes.push_back(new cartePotion("Potion", stat[s], niveau[a], a, s));
                 cartes.push_back(new carteElixir("Elixir", stat[s], niveau[a], a, s));
@@ -48,9 +48,6 @@ void deck() {
     for (i = 0; i < cartes.size() + 1; i++) {
         cartes[i]->afficher();
     }
-    for (i = 0; i < cartes.size() + 1; i++) {
-        delete cartes[i];
-    }
 }
 
 int main()
@@ -58,7 +55,7 @@ int main()
 
     srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
-    deck();
+
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
@@ -70,8 +67,8 @@ int main()
     personnage* perso2 = new personnage("DHB");
 
     perso1->combat(perso2);
-    
-    
+
+    deck();
     
     
     return 0;

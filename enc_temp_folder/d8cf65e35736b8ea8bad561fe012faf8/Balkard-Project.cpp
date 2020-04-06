@@ -49,7 +49,7 @@ void deck() {
         cartes[i]->afficher();
     }
     for (i = 0; i < cartes.size() + 1; i++) {
-        delete cartes[i];
+        cartes[i]->~carte();
     }
 }
 

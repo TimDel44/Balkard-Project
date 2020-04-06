@@ -15,6 +15,5 @@ public:
 	carte(string nom);
 
 	virtual void afficher();
-	~carte();
 };
 

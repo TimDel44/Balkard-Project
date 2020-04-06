@@ -48,9 +48,6 @@ void deck() {
     for (i = 0; i < cartes.size() + 1; i++) {
         cartes[i]->afficher();
     }
-    for (i = 0; i < cartes.size() + 1; i++) {
-        delete cartes[i];
-    }
 }
 
 int main()
@@ -58,8 +55,8 @@ int main()
 
     srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
-    deck();
-    string nom;
+
+    /*string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
 
@@ -70,8 +67,8 @@ int main()
     personnage* perso2 = new personnage("DHB");
 
     perso1->combat(perso2);
-    
-    
+    */
+    deck();
     
     
     return 0;
