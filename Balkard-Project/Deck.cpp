@@ -2,12 +2,17 @@
 #include "carte.h"
 #include "cartePotion.h"
 #include "carteElixir.h"
+#include "carteArgent.h"
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
 
 Deck::Deck()
 {
-    string objet[2] = { "Potion","Elixir" };
+    string objet[3] = { "Potion","Elixir","Pieces" };
     string stat[4] = { "Vie", "Attaque", "Defense", "Perception" };
     string niveau[3] = { "I", "II", "III" };
 
@@ -15,7 +20,7 @@ Deck::Deck()
     int s;
     int i;
     int b;
-    //int valeur = rand() % 90 + 10;
+    int valeur;
     int nbdecarte;
     vector<carte*> cartes;
     for (a = 0; a < 2; a++) {
@@ -35,6 +40,11 @@ Deck::Deck()
         }
     }
 
+    for (i = 0; i < 14; i++) {
+        valeur = rand() % 90 + 10;
+        cartes.push_back(new carteArgent(objet[2], valeur));
+    }
+
     for (i = 0; i < cartes.size(); i++) {
         cartes[i]->afficher();
     }
@@ -44,4 +54,9 @@ Deck::Deck()
     /*for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];
     }*/
+}
+
+void Deck::melangerDeck()
+{
+    random_shuffle(this->cartes.begin(), cartes.end());
 }
