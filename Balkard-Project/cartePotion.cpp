@@ -4,10 +4,9 @@
 #include <string>
 using namespace std;
 
-cartePotion::cartePotion(string nom, int a, int s):carte(nom), alteration(a), statistique(s)
+cartePotion::cartePotion(string nom, int a, int s):carte(nom), alteration(a), statistique(s){}
+
+void cartePotion::afficher()
 {
-	/*carte(nom);
-	this->alteration = alteration;
-	this->statistique = statistique;
-	*/
+	cout << " nom : " << this->getNom() << " alte : " << this->alteration << " stat : " << this->statistique << endl;
 }

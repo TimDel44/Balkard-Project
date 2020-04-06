@@ -4,8 +4,9 @@
 #include <string>
 using namespace std;
 
-carteElixir::carteElixir(string nom, int a, int s) :carte(nom), alteration(a), statistique(s)
+carteElixir::carteElixir(string nom, int a, int s) :carte(nom), alteration(a), statistique(s) {}
+
+void carteElixir::afficher()
 {
-	//this->alteration = alteration;
-	//this->statistique = statistique;
+	cout << " nom : " << this->getNom() << " alte : " << this->alteration << " stat : " << this->statistique << endl;
 }
