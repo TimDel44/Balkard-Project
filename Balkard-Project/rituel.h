@@ -9,7 +9,7 @@ class carteRituel : public carte
 private:
     int alteration;
     int statistique;
-    string noms[7] = {"Force intérieure", ""};
+    string noms[7] = {"Force intérieure", "Décharge", };
 public:
 
     carteRituel(string nom, int a, int s);
