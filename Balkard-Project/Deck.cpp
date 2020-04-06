@@ -15,13 +15,13 @@ Deck::Deck()
     string objet[3] = { "Potion","Elixir","Pieces" };
     string stat[4] = { "Vie", "Attaque", "Defense", "Perception" };
     string niveau[3] = { "I", "II", "III" };
-
     int a;
     int s;
     int i;
     int b;
     int valeur;
     int nbdecarte;
+    this->cartesPioche;
     this->cartes;
     for (a = 0; a < 2; a++) {
         b = (3 - a);
@@ -69,13 +69,13 @@ void Deck::pioche() {
     this->cartesPioche;
     for (int i = 0; i < 7; i++) {
         cartesPioche[i] = this->cartes.back();
-        this->cartes.pop_back();
+       // this->cartes.pop_back();
     }
 }
-void Deck::afficherPioche() {
+/*void Deck::afficherPioche() {
     int i;
     for (i = 0; i < 7; i++) {
         cartesPioche[i]->afficher();
     }
-}
+}*/
 

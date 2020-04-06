@@ -44,12 +44,11 @@ int main()
     cout << " 88    .88 88 88.  ... 88    88 88 .88'  88.  ... 88    88 88.  .88 88.  ...          88 88.  .88 88          88    .88 88.  .88 88 88  `8b. 88.  .88 88       88.  .88" << endl;
     cout << " 88888888P dP `88888P' dP    dP 8888P'   `88888P' dP    dP `88888P' `88888P'    `88888P' `88888P' dP          88888888P `88888P8 dP dP   `YP `88888P8 dP       `88888P8    88    88    88 "<< endl;
     //new Titre();
-    Deck deck;
-    deck.melangerDeck();
-    deck.afficherDeck();
-    deck.pioche();
-    deck.afficherDeck();
-    deck.afficherPioche();
+    Deck* deck= new Deck;
+    deck->melangerDeck();
+    deck->afficherDeck();
+    deck->pioche();
+    //deck->afficherPioche();
 
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
@@ -67,6 +66,9 @@ int main()
     personnage* perso2 = new personnage("DHB");
     joueur* player2 = new joueur(perso2);
 
+    player1->joueurPiocher(deck);
+    string pause;
+    cin >> pause;
     player1->joueurCombat(player2);
 
     return 0;
