@@ -15,7 +15,7 @@ Deck::Deck()
     int s;
     int i;
     int b;
-    //int valeur = rand() % 90 + 10;
+    int valeur = rand() % 90 + 10;
     int nbdecarte;
     vector<carte*> cartes;
     for (a = 0; a < 2; a++) {
@@ -34,6 +34,8 @@ Deck::Deck()
             }
         }
     }
+
+    //for (i = 0; i < 14; i++) {}
 
     for (i = 0; i < cartes.size(); i++) {
         cartes[i]->afficher();
