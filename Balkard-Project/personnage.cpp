@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <random>
+#include "joueur.h"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ void personnage::afficher() {
 	//cout << "| nom : " << this->getNom() << endl;
 }
 
-void personnage::attaquer(personnage* cible) {
+/*void personnage::attaquer(joueur* cible) {
 	int jetAttaque = rand() % 7;
 	cout << "\n" << this->nom << " se prepare a attaquer !\n" << endl;
 	Sleep(5000);
@@ -80,7 +81,7 @@ int personnage::jetInitierCombat() {
 	return jetInitiative + this->initiative;
 }
 
-void personnage::initierCombat(personnage* cible) {	
+void personnage::initierCombat(joueur* cible) {	
 	if (this->jetInitierCombat() > cible->jetInitierCombat() ) {
 		this->attaquer(cible);
 		cible->attaquer(this);
@@ -114,4 +115,4 @@ void personnage::combat(personnage* cible) {
 	printf("\n------------------------------------------------------\n");
 
 	cible->afficher();
-}
+}*/
