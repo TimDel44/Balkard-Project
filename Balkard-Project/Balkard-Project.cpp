@@ -4,6 +4,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "carteElixir.h"
+#include "cartePotion.h"
+#include "carteSort.h"
+#include "carte.h"
+
 #include <cstdlib>
 #include <ctime>
 #ifdef _WIN32
@@ -23,6 +29,7 @@ using namespace std;
 
 int main()
 {
+
     srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
 
@@ -39,7 +46,17 @@ int main()
     perso1->combat(perso2);
 
 
-    return 0;
+    return 0;*/
+    int a = 0;
+    int s = 0;
+    vector<carte*> cartes;
+    cartes.push_back(new cartePotion("PotionVieII", 2, 1));
+    cartes.push_back(new carteElixir("ElixirAttI", 1, 2));
+    cartes.push_back(new cartePotion("PotionDefIII", 3, 3));
+
+    cartes[0]->afficher();
+    cartes[1]->afficher();
+    cartes[2]->afficher();
 
 }
 

@@ -21,6 +21,16 @@
     <ClCompile Include="personnage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cartePotion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="carteElixir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="carteSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="carte.cpp">
     <ClCompile Include="joueur.cpp">
     <ClCompile Include="carteArgent.cpp">
       <Filter>Source Files</Filter>
@@ -30,6 +40,16 @@
     <ClInclude Include="personnage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cartePotion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="carteElixir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="carteSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="carte.h">
     <ClInclude Include="joueur.h">
     <ClInclude Include="carteArgent.h">
       <Filter>Header Files</Filter>
