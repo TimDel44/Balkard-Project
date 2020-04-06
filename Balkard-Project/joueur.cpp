@@ -56,7 +56,7 @@ void joueur::attaquer(joueur* cible) {
 	int jetCritique = rand() % 101;
 	if (jetAttaque != 0) {
 		if (jetCritique > 89) {
-			cout << "\n" << this->perso->getNom() << " a fait un fait un coup critique ! Degats doubles !" << endl;
+			cout << "\n" << this->perso->getNom() << " a fait un fait un coup critique !" << endl;
 			cible->subir(this->perso->getAttaque() * 1.25 + jetAttaque * 1.25);
 		}
 		else {

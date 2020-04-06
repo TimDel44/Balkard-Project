@@ -13,7 +13,12 @@ private:
 public:
 	Deck();
 
+
 	carte* cartesPioche[7];
+
+	//carte* getCarte() { return this->cartes; }
+	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
+
 
 	void melangerDeck();
 	void afficherDeck();
