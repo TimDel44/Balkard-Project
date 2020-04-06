@@ -22,7 +22,7 @@ private:
 	int persoVivant;
 	personnage* perso;
 	int argent;
-
+	vector<int> main;
 public:
 
 	int getActif() { return this->actif; }
