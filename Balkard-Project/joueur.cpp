@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdlib.h>
+#include "graphics.h"
 #include <ctime>
 
 joueur::joueur(personnage* perso) {
@@ -37,6 +38,7 @@ void joueur::joueurCombat(joueur* cible) {
 		this->initierCombat(cible);
 
 		printf("\n\n\n");
+		system("cls");
 	}
 
 	printf("\n\n\n");
@@ -98,4 +100,21 @@ void joueur::initierCombat(joueur* cible) {
 		this->attaquer(cible);
 	}
 
+}
+
+void joueur::clear() {
+	COORD topLeft = { 0, 0 };
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_SCREEN_BUFFER_INFO screen;
+	DWORD written;
+
+	GetConsoleScreenBufferInfo(console, &screen);
+	FillConsoleOutputCharacterA(
+		console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+		);
+	FillConsoleOutputAttribute(
+		console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
+		screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+		);
+	SetConsoleCursorPosition(console, topLeft);
 }

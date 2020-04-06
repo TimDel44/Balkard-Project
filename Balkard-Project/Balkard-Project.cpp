@@ -25,6 +25,7 @@
 #include "joueur.h"
 #include "Deck.h"
 #include "Titre.h"
+#include "graphics.h"
 
 
 using namespace std;
@@ -49,14 +50,12 @@ int main()
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
-    player1->afficherJoueur();
    
 
     personnage* perso2 = new personnage("DHB");
     joueur* player2 = new joueur(perso2);
 
     player1->joueurCombat(player2);
-    //perso1->combat(perso2);
 
     return 0;
 }

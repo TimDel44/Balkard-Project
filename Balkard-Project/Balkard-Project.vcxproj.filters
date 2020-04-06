@@ -11,6 +11,7 @@
     <ClCompile Include="carteArgent.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Titre.cpp" />
+    <ClCompile Include="graphics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
@@ -22,5 +23,6 @@
     <ClInclude Include="personnage.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Titre.h" />
+    <ClInclude Include="graphics.h" />
   </ItemGroup>
 </Project>

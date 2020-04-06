@@ -7,12 +7,14 @@ using namespace std;
 
 class Deck
 {
+private:
+
 public:
 	Deck();
 
-	//carte* getCarte() { return this->cartes; }
-	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
+	/*carte* getCarte() { return this->cartes; }
+	void setCarte(carte* cartes) { this->cartes = cartes; }
 
-	void melangerDeck();
+	void melangerDeck();*/
 };
 

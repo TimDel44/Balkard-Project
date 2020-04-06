@@ -41,4 +41,5 @@ public:
 	void subir(int degats);
 	int jetInitierCombat();
 	void initierCombat(joueur*);
+	void clear();
 };

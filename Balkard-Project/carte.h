@@ -10,7 +10,7 @@ protected:
 
 public:
 	string getNom() { return this->nom; }
-	string setNom(std::string nom) { this->nom = nom; }
+	void setNom(string nom) { this->nom = nom; }
 
 	carte(string nom);
 
