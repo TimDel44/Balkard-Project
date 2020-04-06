@@ -148,7 +148,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
-
     <ClCompile Include="carte.cpp" />
     <ClCompile Include="carteElixir.cpp" />
     <ClCompile Include="cartePotion.cpp" />
@@ -159,10 +158,12 @@
     <ClInclude Include="carteElixir.h" />
     <ClInclude Include="cartePotion.h" />
     <ClInclude Include="carteSort.h" />
+    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Deck.h" />
     <ClInclude Include="joueur.h" />
     <ClCompile Include="carteArgent.cpp" />
   </ItemGroup>

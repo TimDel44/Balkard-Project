@@ -1,11 +1,10 @@
 #include "carteArgent.h"
 #include <iostream>
-
+#include "carte.h"
+#include <string>
 using namespace std;
 
-carteArgent::carteArgent(int valeur) {
-	this->valeur = valeur;
-}
+carteArgent::carteArgent(string nom, int valeur) :carte(nom), valeur(valeur) {}
 
 void carteArgent::afficher() {
 	cout << "--------------------" << endl;

@@ -13,3 +13,5 @@ void carte::afficher()
 {
 	cout << " nom : " << this->getNom() << endl;
 }
+
+carte::~carte(){}

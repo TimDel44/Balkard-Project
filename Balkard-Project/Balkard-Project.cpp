@@ -23,16 +23,19 @@
 #include "personnage.h"
 #include "carteArgent.h"
 #include "joueur.h"
+#include "Deck.h"
 
 
 using namespace std;
+
+
 
 int main()
 {
 
     srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
-
+    new Deck();
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
@@ -47,7 +50,6 @@ int main()
 
     player1->joueurCombat(player2);
     //perso1->combat(perso2);
-
 
     return 0;
     int a = 0;
