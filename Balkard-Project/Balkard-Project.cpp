@@ -46,7 +46,7 @@ int main()
     perso1->combat(perso2);
 
 
-    return 0;*/
+    return 0;
     int a = 0;
     int s = 0;
     vector<carte*> cartes;
