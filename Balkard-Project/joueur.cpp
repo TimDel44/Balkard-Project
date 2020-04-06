@@ -1,5 +1,6 @@
 #include "joueur.h"
 #include "personnage.h"
+#include "Deck.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -99,3 +100,18 @@ void joueur::initierCombat(joueur* cible) {
 	}
 
 }
+
+/*void joueur::choisirCarte() {
+	this->cartesPioche;
+	this->main;
+	int a;
+	cin >> a;
+	main.push_back(cartesPioche[a]);
+}
+
+void joueur::afficherMain() {
+	int i;
+	for (i = 0; i < main.size(); i++) {
+		main[i]->afficher();
+	}
+}*/

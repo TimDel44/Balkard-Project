@@ -35,7 +35,14 @@ int main()
 
     srand(time(NULL));
     cout << "Bienvenue sur Balkard...\n" << endl;
-    new Deck();
+    Deck deck;
+    deck.melangerDeck();
+    deck.afficherDeck();
+    deck.pioche();
+    deck.afficherDeck();
+    deck.afficherPioche();
+
+
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
@@ -43,6 +50,9 @@ int main()
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
     player1->afficherJoueur();
+
+    //player1->choisirCarte();
+    //player1->afficherMain();
    
 
     personnage* perso2 = new personnage("DHB");
@@ -52,17 +62,6 @@ int main()
     //perso1->combat(perso2);
 
     return 0;
-    int a = 0;
-    int s = 0;
-    vector<carte*> cartes;
-    cartes.push_back(new cartePotion("PotionVieII", 2, 1));
-    cartes.push_back(new carteElixir("ElixirAttI", 1, 2));
-    cartes.push_back(new cartePotion("PotionDefIII", 3, 3));
-
-    cartes[0]->afficher();
-    cartes[1]->afficher();
-    cartes[2]->afficher();
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

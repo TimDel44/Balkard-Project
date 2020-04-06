@@ -22,7 +22,7 @@ Deck::Deck()
     int b;
     int valeur;
     int nbdecarte;
-    vector<carte*> cartes;
+    this->cartes;
     for (a = 0; a < 2; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
@@ -45,9 +45,7 @@ Deck::Deck()
         cartes.push_back(new carteArgent(objet[2], valeur));
     }
 
-    for (i = 0; i < cartes.size(); i++) {
-        cartes[i]->afficher();
-    }
+    
 
 
 
@@ -56,7 +54,28 @@ Deck::Deck()
     }*/
 }
 
-void Deck::melangerDeck()
-{
-    random_shuffle(this->cartes.begin(), cartes.end());
+void Deck::melangerDeck() {
+    random_shuffle(this->cartes.begin(), this->cartes.end());
 }
+
+void Deck::afficherDeck() {
+    int i;
+    for (i = 0; i < this->cartes.size(); i++) {
+        cartes[i]->afficher();
+    }
+    cout << endl;
+}
+void Deck::pioche() {
+    this->cartesPioche;
+    for (int i = 0; i < 7; i++) {
+        cartesPioche[i] = this->cartes.back();
+        this->cartes.pop_back();
+    }
+}
+void Deck::afficherPioche() {
+    int i;
+    for (i = 0; i < 7; i++) {
+        cartesPioche[i]->afficher();
+    }
+}
+
