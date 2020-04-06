@@ -56,7 +56,7 @@ Deck::Deck()
     }*/
 }
 
-void Deck::melangerDeck()
-{
-    random_shuffle(this->cartes.begin(), cartes.end());
-}
+//void Deck::melangerDeck()
+//{
+//    random_shuffle(this->cartes.begin(), cartes.end());
+//}

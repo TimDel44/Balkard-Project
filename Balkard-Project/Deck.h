@@ -10,8 +10,8 @@ class Deck
 public:
 	Deck();
 
-	carte* getCarte() { return this->cartes; }
-	carte* setCarte(carte* cartes) { this->cartes = cartes; }
+	//carte* getCarte() { return this->cartes; }
+	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
 
 	void melangerDeck();
 };
