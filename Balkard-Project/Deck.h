@@ -24,5 +24,6 @@ public:
 	void afficherDeck();
 	void pioche();
 	void afficherPioche();
+
 };
 

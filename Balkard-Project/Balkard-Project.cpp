@@ -25,6 +25,7 @@
 #include "joueur.h"
 #include "Deck.h"
 #include "Titre.h"
+#include "graphics.h"
 
 
 using namespace std;
@@ -53,20 +54,20 @@ int main()
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
+    system("cls");
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
-    player1->afficherJoueur();
 
     //player1->choisirCarte();
     //player1->afficherMain();
+
    
 
     personnage* perso2 = new personnage("DHB");
     joueur* player2 = new joueur(perso2);
 
     player1->joueurCombat(player2);
-    //perso1->combat(perso2);
 
     return 0;
 }
