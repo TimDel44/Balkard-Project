@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <ctime>
 #include "personnage.h"
+#include "Deck.h"
 using namespace std;
 
 class joueur
@@ -26,7 +27,8 @@ private:
 	int possedeSort;
 	int possedeRituel;
 	int possedeItem;
-
+	vector<carte*> main;
+  
 public:
 
 	int getActif() { return this->actif; }
@@ -51,7 +53,13 @@ public:
 	void subir(int degats);
 	int jetInitierCombat();
 	void initierCombat(joueur*);
+
 	void clear();
 	void finDeCombat(joueur*);
 	void debutDeCombat(joueur*);
+
+
+	void choisirCarte();
+	void afficherMain();
+
 };

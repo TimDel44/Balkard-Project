@@ -36,6 +36,7 @@ int main()
 {
 
     srand(time(NULL));
+
     cout << " 888888ba  oo                                                                                                 888888ba           dP dP                               dP" << endl;
     cout << " 88    `8b                                                                                                    88    `8b          88 88                               88" << endl;
     cout << " 88aaaa8P' dP .d8888b. 88d888b. dP   .dP .d8888b. 88d888b. dP    dP .d8888b.    .d8888b. dP    dP 88d888b.    88aaaa8P' .d8888b. 88 88  .dP  .d8888b. 88d888b. .d888b88" << endl;
@@ -43,7 +44,13 @@ int main()
     cout << " 88    .88 88 88.  ... 88    88 88 .88'  88.  ... 88    88 88.  .88 88.  ...          88 88.  .88 88          88    .88 88.  .88 88 88  `8b. 88.  .88 88       88.  .88" << endl;
     cout << " 88888888P dP `88888P' dP    dP 8888P'   `88888P' dP    dP `88888P' `88888P'    `88888P' `88888P' dP          88888888P `88888P8 dP dP   `YP `88888P8 dP       `88888P8    88    88    88 "<< endl;
     //new Titre();
-    new Deck();
+    Deck deck;
+    deck.melangerDeck();
+    deck.afficherDeck();
+    deck.pioche();
+    deck.afficherDeck();
+    deck.afficherPioche();
+
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
@@ -51,6 +58,10 @@ int main()
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
+
+    //player1->choisirCarte();
+    //player1->afficherMain();
+
    
 
     personnage* perso2 = new personnage("DHB");

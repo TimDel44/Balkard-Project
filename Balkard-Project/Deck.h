@@ -8,13 +8,22 @@ using namespace std;
 class Deck
 {
 private:
-
+	vector<carte*> cartes;
+	
 public:
 	Deck();
 
-	/*carte* getCarte() { return this->cartes; }
-	void setCarte(carte* cartes) { this->cartes = cartes; }
 
-	void melangerDeck();*/
+	carte* cartesPioche[7];
+
+	//carte* getCarte() { return this->cartes; }
+	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
+
+
+	void melangerDeck();
+	void afficherDeck();
+	void pioche();
+	void afficherPioche();
+
 };
 

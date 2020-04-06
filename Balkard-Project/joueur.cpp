@@ -1,5 +1,6 @@
 #include "joueur.h"
 #include "personnage.h"
+#include "Deck.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -144,7 +145,6 @@ void joueur::clear() {
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO screen;
 	DWORD written;
-
 	GetConsoleScreenBufferInfo(console, &screen);
 	FillConsoleOutputCharacterA(
 		console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
@@ -155,3 +155,21 @@ void joueur::clear() {
 		);
 	SetConsoleCursorPosition(console, topLeft);
 }
+
+}
+
+/*void joueur::choisirCarte() {
+	this->cartesPioche;
+	this->main;
+	int a;
+	cin >> a;
+	main.push_back(cartesPioche[a]);
+}
+
+void joueur::afficherMain() {
+	int i;
+	for (i = 0; i < main.size(); i++) {
+		main[i]->afficher();
+	}
+}*/
+
