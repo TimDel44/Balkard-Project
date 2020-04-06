@@ -37,20 +37,20 @@ public :
 	int getPA() { return this->pa; }
 
 	string setNom(string nom) { this->nom = nom; }
-	int setVie(int vie) {this->vie = vie; }
-	int setAttaque(int attaque) {this->attaque = attaque; }
-	int setDefense(int defense) {this->defense = defense; }
-	int setPerception(int perception) {this->perception = perception; }
-	int setInitiative(int initiative) {this->initiative = initiative; }
-	int setEsquive(int esquive) {this->esquive = esquive; }
-	int setPA(int pa) {this->pa = pa; }
+	void setVie(int vie) {this->vie = vie; }
+	void setAttaque(int attaque) {this->attaque = attaque; }
+	void setDefense(int defense) {this->defense = defense; }
+	void setPerception(int perception) {this->perception = perception; }
+	void setInitiative(int initiative) {this->initiative = initiative; }
+	void setEsquive(int esquive) {this->esquive = esquive; }
+	void setPA(int pa) {this->pa = pa; }
 
 	personnage(string nom);
 	void afficher();
-	void attaquer(personnage*);
-	void subir(int degats);
-	int jetInitierCombat();
-	void initierCombat(personnage*);
-	void combat(personnage*);
+	//void attaquer(joueur*);
+	//void subir(int degats);
+	//int jetInitierCombat();
+	//void initierCombat(joueur*);
+	//void combat(joueur*);
 };
 

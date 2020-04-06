@@ -36,4 +36,9 @@ public:
 
 	joueur(personnage* perso);
 	void afficherJoueur();
+	void joueurCombat(joueur* cible);
+	void attaquer(joueur*);
+	void subir(int degats);
+	int jetInitierCombat();
+	void initierCombat(joueur*);
 };
