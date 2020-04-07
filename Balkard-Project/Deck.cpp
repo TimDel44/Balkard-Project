@@ -13,7 +13,7 @@
 Deck::Deck()
 {
     string objet[3] = { "Potion","Elixir","Pieces" };
-    string stat[4] = { "Vie", "Attaque", "Defense", "Perception" };
+    string stat[4] = { "Vie", "Attaque", "Defense", "Percep\." };
     string niveau[3] = { "I", "II", "III" };
     int a;
     int s;
@@ -63,13 +63,14 @@ void Deck::afficherDeck() {
     for (i = 0; i < this->cartes.size(); i++) {
         cartes[i]->afficher();
     }
+    cartes.size();
     cout << endl;
 }
 void Deck::pioche() {
-    this->cartesPioche;
-    for (int i = 0; i < 7; i++) {
-        cartesPioche[i] = this->cartes.back();
-       // this->cartes.pop_back();
+   // this->cartesPioche;
+    for (int i = 0; i < 4; i++) {
+        this->cartesPioche.push_back(cartes[cartes.size()-(1+i)]);
+        this->cartes.pop_back();
     }
 }
 /*void Deck::afficherPioche() {
