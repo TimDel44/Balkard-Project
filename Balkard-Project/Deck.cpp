@@ -23,6 +23,7 @@ Deck::Deck()
     int valeur;
     int nbdecarte;
     this->cartes;
+
     for (a = 0; a < 2; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
