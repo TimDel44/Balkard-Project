@@ -57,8 +57,8 @@ public:
 	void finDeCombat(joueur*);
 	void debutDeCombat(joueur*);
 
-
-	void choisirCarte();
-	void afficherMain();
+	void joueurPiocher(Deck* deck);
+	//void choisirCarte();
+	//void afficherMain();
 
 };
