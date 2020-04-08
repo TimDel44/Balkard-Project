@@ -3,6 +3,10 @@
 #include "cartePotion.h"
 #include "carteElixir.h"
 #include "carteArgent.h"
+#include "carteArme.h"
+#include "carteArmure.h"
+#include "carteTalisman.h"
+#include "carteBotte.h"
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -12,9 +16,11 @@
 
 Deck::Deck()
 {
-    string objet[3] = { "Potion","Elixir","Pieces" };
+    string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
     string stat[4] = { "Vie", "Attaque", "Defense", "Percep\." };
     string niveau[3] = { "I", "II", "III" };
+    string materiauArmure[3] = { "Cuir", "Fer", "Or" };
+    string materiauArme[3] = { "Bois","Fer","Or" };
     int a;
     int s;
     int i;
@@ -23,6 +29,7 @@ Deck::Deck()
     int nbdecarte;
     this->cartesPioche;
     this->cartes;
+    //CARTE POTION
     for (a = 0; a < 2; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
@@ -31,6 +38,7 @@ Deck::Deck()
             }
         }
     }
+    //CARTE ELIXIR
     for (a = 0; a < 1; a++) {
         b = 1;
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
@@ -39,15 +47,38 @@ Deck::Deck()
             }
         }
     }
-
+    //CARTE ARGENT
     for (i = 0; i < 14; i++) {
         valeur = rand() % 90 + 10;
         cartes.push_back(new carteArgent(objet[2], valeur));
     }
-
-    /*for (i = 0; i < cartes.size(); i++) {
+    //CARTE ARMURE et BOTTE
+    for (a = 0; a < 3; a++) {
+        b = (3 - a);
+        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
+             cartes.push_back(new carteArmure(objet[3], stat[2], materiauArmure[a], a, 2));
+             cartes.push_back(new carteBotte(objet[4], stat[2], materiauArmure[a], a, 2));
+        }
+    }
+    //CARTE ARME
+    for (a = 0; a < 3; a++) {
+        b = (3 - a);
+        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
+            cartes.push_back(new carteArme(objet[5], stat[1], materiauArme[a], a, 1));
+        }
+    }
+    //CARTE TALISMAN
+    for (a = 0; a < 3; a++) {
+        b = (3 - a);
+        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
+            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a, 6));
+        }
+    }
+    /*
+    for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];
-    }*/
+    }
+    */
 }
 
 void Deck::melangerDeck() {

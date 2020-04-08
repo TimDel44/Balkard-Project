@@ -186,12 +186,14 @@ void joueur::joueurPiocher(Deck* deck){
 	}*/
 		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
-	//vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
-	/*this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
+	/*
+	vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
+	this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
 	for (i = 0; i < this->main.size(); i++) {
 		main[i]->afficher();
-	}*/
+	}
 	//cout <<" "<< this->main << endl;
+	*/
 }
 
 
