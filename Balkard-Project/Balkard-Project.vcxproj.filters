@@ -9,6 +9,7 @@
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
     <ClCompile Include="carteArgent.cpp" />
+    <ClCompile Include="carteRituel.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Titre.cpp" />
     <ClCompile Include="graphics.cpp" />
@@ -21,6 +22,7 @@
     <ClInclude Include="joueur.h" />
     <ClInclude Include="carteArgent.h" />
     <ClInclude Include="personnage.h" />
+    <ClInclude Include="carteRituel.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Titre.h" />
     <ClInclude Include="graphics.h" />

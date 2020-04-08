@@ -151,6 +151,7 @@
     <ClCompile Include="carte.cpp" />
     <ClCompile Include="carteElixir.cpp" />
     <ClCompile Include="cartePotion.cpp" />
+    <ClCompile Include="carteRituel.cpp" />
     <ClCompile Include="carteSort.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="Titre.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="carte.h" />
     <ClInclude Include="carteElixir.h" />
     <ClInclude Include="cartePotion.h" />
+    <ClInclude Include="carteRituel.h" />
     <ClInclude Include="carteSort.h" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="joueur.cpp" />

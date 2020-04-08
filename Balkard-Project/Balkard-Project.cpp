@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 #include <cstdlib>
 #include <ctime>
 #ifdef _WIN32
@@ -16,6 +17,7 @@
 #include "carteElixir.h"
 #include "cartePotion.h"
 #include "carteSort.h"
+#include "carteRituel"
 #include "carte.h"
 
 #include "personnage.h"
