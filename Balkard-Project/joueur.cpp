@@ -136,17 +136,16 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 }
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
+	this->perso->setPA(3);
+	cible->perso->setPA(3);
 	this->joueurPiocher(deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
 	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
 	this->joueurJouerCarte(cible, deck);
-	string pause;
-	cin >> pause;
 	cout << "Joueur 2, voici vos cartes :" << endl;
 	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
-	string pause1;
-	cin >> pause1;
+	cible->joueurJouerCarte(cible, deck);
 		if (this->possedeItem == 1) {
 
 			cout << "\n jouez une carte Item" << endl;
@@ -156,22 +155,35 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 }
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
-	cout << "choisissez une carte à jouer" << endl;
-	cin >> choix;
-	//this->main.erase(choix);
-	
+	if (this->main.size() != 0) {
+		while (this->perso->getPA() != 0) {
+			cout << "choisissez une carte a jouer" << endl;
+			cin >> choix;
+			while (choix > main.size()) {
+				cout << "choisissez un nombre valide" << endl;
+				cin >> choix;
+			}
+			this->main.erase(main.begin() + choix - 1);
+			this->perso->setPA(this->perso->getPA() - 1);
+			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
+		}
+	}
 }
 void joueur::joueurPiocher(Deck* deck){
-	/*
-	deck->pioche();
-	for (i = 0; i < deck->getPioche().size(); i++) {
-		deck->getPioche().operator[](i)->afficher();
-	}
-	*/
+	
 	for (int i = 0; i < 4; i++) {
-		this->main.push_back(deck->getCarte()[i/*deck->getCarte().size() - (1 + i)*/]);
-		//deck->getCarte().erase(deck->getPioche().begin());
-		deck->suppCarte();
+		if (deck->getCarte().size() > 4) {
+			this->main.push_back(deck->getCarte()[i]); /*deck->getCarte().size() - (1 + i)*/
+			//deck->getCarte().erase(deck->getPioche().begin());
+			deck->suppCarte();
+		}
+		else {
+			cout << "Il n\'y a plus de cartes !" << endl;
+		}
+		//deck->pioche();
+	/*for (i = 0; i < deck->getPioche().size(); i++) {
+		deck->getPioche().operator[](i)->afficher();
+	}*/
 		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
 	/*
