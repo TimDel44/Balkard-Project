@@ -137,10 +137,10 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
 	this->joueurPiocher(deck);
-	this->joueurJouerCarte(cible, deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
 	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
+	this->joueurJouerCarte(cible, deck);
 	string pause;
 	cin >> pause;
 	cout << "Joueur 2, voici vos cartes :" << endl;
@@ -159,24 +159,29 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	cout << "choisissez une carte à jouer" << endl;
 	cin >> choix;
 	//this->main.erase(choix);
+	
 }
 void joueur::joueurPiocher(Deck* deck){
-	//deck->pioche();
-	/*for (i = 0; i < deck->getPioche().size(); i++) {
+	/*
+	deck->pioche();
+	for (i = 0; i < deck->getPioche().size(); i++) {
 		deck->getPioche().operator[](i)->afficher();
-	}*/
+	}
+	*/
 	for (int i = 0; i < 4; i++) {
 		this->main.push_back(deck->getCarte()[i/*deck->getCarte().size() - (1 + i)*/]);
 		//deck->getCarte().erase(deck->getPioche().begin());
 		deck->suppCarte();
 		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
-	//vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
-	/*this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
+	/*
+	vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
+	this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
 	for (i = 0; i < this->main.size(); i++) {
 		main[i]->afficher();
-	}*/
+	}
 	//cout <<" "<< this->main << endl;
+	*/
 }
 
 
