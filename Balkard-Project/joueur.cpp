@@ -107,17 +107,24 @@ void joueur::initierCombat(joueur* cible, Deck* deck) {
 	if (this->jetInitierCombat() > cible->jetInitierCombat()) {
 		this->attaquer(cible);
 		cible->attaquer(this);
-		finDeCombat(cible);
+		finDeCombat(cible, deck);
 	}
 	else {
 		cible->attaquer(this);
 		this->attaquer(cible);
-		finDeCombat(cible);
+		finDeCombat(cible, deck);
 	}
 }
 
-void joueur::finDeCombat(joueur* cible) {
+void joueur::finDeCombat(joueur* cible, Deck* deck) {
 	cout << "\n End Phase" << endl;
+	cout << "Joueur 1, voici vos cartes :" << endl;
+	for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
+	string pause;
+	cin >> pause;
+	cout << "Joueur 2, voici vos cartes :" << endl;
+	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
+	cin >> pause;
 	if (this->possedeRituel == 1) {
 
 		cout << "\n jouez une carte Rituel" << endl;
@@ -146,7 +153,10 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 
 		}
 }
-
+void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
+	int choix;
+	cout << "choisissez une carte à jouer" << endl;
+}
 void joueur::joueurPiocher(Deck* deck){
 	//deck->pioche();
 	/*for (i = 0; i < deck->getPioche().size(); i++) {

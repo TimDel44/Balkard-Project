@@ -52,7 +52,7 @@ int main()
     //deck->afficherPioche();
 
     string nom;
-    cout << "Entrez le nom du joueur\n" << endl;
+    cout << "\n\n\n\n\n\nEntrez le nom du joueur\n" << endl;
     cin >> nom;
     system("cls");
 
@@ -64,7 +64,7 @@ int main()
 
    
 
-    personnage* perso2 = new personnage("DHB");
+    personnage* perso2 = new personnage("Big \'E\'");
     joueur* player2 = new joueur(perso2);
 
     //string pause;
