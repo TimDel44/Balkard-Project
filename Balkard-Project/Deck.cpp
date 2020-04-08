@@ -70,12 +70,14 @@ Deck::Deck()
         }
     }
     //CARTE TALISMAN
+    /*
     for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
         }
     }
+    */
     /*
     for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];

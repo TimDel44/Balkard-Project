@@ -155,21 +155,21 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 }
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
-	if (this->main.size() != 0) {
-		while (this->perso->getPA() != 0) {
-			for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
-			cout << "choisissez une carte a jouer" << endl;
-			cin >> choix;
-			while (choix > main.size()) {
-				cout << "choisissez un nombre valide" << endl;
+		if (this->main.size() != 0) {
+			while (this->perso->getPA() != 0) {
+				for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
+				cout << "choisissez une carte a jouer" << endl;
 				cin >> choix;
+				while (choix > main.size()) {
+					cout << "choisissez un nombre valide" << endl;
+					cin >> choix;
+				}
+				joueurActiverCarte(cible, deck, choix);
+				this->main.erase(main.begin() + choix - 1);
+				this->perso->setPA(this->perso->getPA() - 1);
+				cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 			}
-			joueurActiverCarte(cible, deck, choix);
-			this->main.erase(main.begin() + choix - 1);
-			this->perso->setPA(this->perso->getPA() - 1);
-			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 		}
-	}
 	this->main.clear();
 }
 
@@ -188,7 +188,7 @@ void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive !" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 4) {
 		this->perso->setPerception(this->perso->getPerception() + this->main[choix - 1]->getAlteration() - 2);
-		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() - 2 << " points d'esquive !" << endl;
+		cout << "vous pouvez piocher " << this->perso->getPerception() << " cartes !" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 6) {
 		this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
 		cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;
@@ -197,7 +197,7 @@ void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 
 void joueur::joueurPiocher(Deck* deck){
 	
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < this->perso->getPerception(); i++) {
 		if (deck->getCarte().size() > 4) {
 			this->main.push_back(deck->getCarte()[i]); /*deck->getCarte().size() - (1 + i)*/
 			//deck->getCarte().erase(deck->getPioche().begin());
