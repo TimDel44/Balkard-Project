@@ -136,6 +136,8 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 }
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
+	this->perso->setPA(3);
+	cible->perso->setPA(3);
 	this->joueurPiocher(deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
@@ -154,14 +156,16 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
 	if (this->main.size() != 0) {
-		cout << "choisissez une carte a jouer" << endl;
-		cin >> choix;
-		if (choix < main.size()) {
-			this->main.erase(main.begin() + choix - 1);
-		}
-		else {
-			cout << "choisissez un nombre valide" << endl;
+		while (this->perso->getPA() != 0) {
+			cout << "choisissez une carte a jouer" << endl;
 			cin >> choix;
+			while (choix > main.size()) {
+				cout << "choisissez un nombre valide" << endl;
+				cin >> choix;
+			}
+			this->main.erase(main.begin() + choix - 1);
+			this->perso->setPA(this->perso->getPA() - 1);
+			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 		}
 	}
 }
