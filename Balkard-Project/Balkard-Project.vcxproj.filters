@@ -9,8 +9,14 @@
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
     <ClCompile Include="carteArgent.cpp" />
+    <ClCompile Include="carteRituel.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Titre.cpp" />
+    <ClCompile Include="graphics.cpp" />
+    <ClCompile Include="carteArme.cpp" />
+    <ClCompile Include="carteArmure.cpp" />
+    <ClCompile Include="carteTalisman.cpp" />
+    <ClCompile Include="carteBotte.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
@@ -20,7 +26,13 @@
     <ClInclude Include="joueur.h" />
     <ClInclude Include="carteArgent.h" />
     <ClInclude Include="personnage.h" />
+    <ClInclude Include="carteRituel.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Titre.h" />
+    <ClInclude Include="graphics.h" />
+    <ClInclude Include="carteArme.h" />
+    <ClInclude Include="carteArmure.h" />
+    <ClInclude Include="carteTalisman.h" />
+    <ClInclude Include="carteBotte.h" />
   </ItemGroup>
 </Project>

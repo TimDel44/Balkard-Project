@@ -4,21 +4,15 @@
 #include <string>
 using namespace std;
 
-
-class carteElixir : public carte
+class carteRituel : public carte
 {
 private:
-    string nomStat;
-    string niveau;
     int alteration;
     int statistique;
+    string noms[7] = {"Force intérieure", "Décharge", };
 public:
 
-    carteElixir(string nom, string nomStat, string niveau, int a, int s);
-    string getNomStat() { return this->nomStat; }
-    void setNomStat(std::string nomStat) { this->nomStat = nomStat; }
-    string getNiveau() { return this->niveau; }
-    void setNiveau(std::string niveau) { this->niveau = niveau; }
+    carteRituel(string nom, int a, int s);
     int getAlteration() { return this->alteration; }
     int getStatistique() { return this->statistique; }
     void setAlteration(int a) { this->alteration = a; }

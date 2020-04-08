@@ -9,11 +9,13 @@ class Deck
 {
 private:
 	vector<carte*> cartes;
-	carte* cartesPioche[7];
+	vector<carte*> cartesPioche;
 public:
 	Deck();
 
-	//carte* getCarte() { return this->cartes; }
+	vector<carte*> getPioche() { return this->cartesPioche; }
+
+	vector<carte*> getCarte() { return this->cartes; }
 	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
 
 
@@ -21,5 +23,8 @@ public:
 	void afficherDeck();
 	void pioche();
 	void afficherPioche();
+	void checkTaille();
+	void suppCarte();
+
 };
 

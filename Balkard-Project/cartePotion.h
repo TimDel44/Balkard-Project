@@ -20,10 +20,10 @@ public:
     string getNiveau() { return this->niveau; }
     string setNiveau(std::string niveau) { this->niveau = niveau; }
 
-    int getAlteration() { return this->alteration; }
-    int getStatistique() { return this->statistique; }
-    void setAlteration(int a) { this->alteration = a; }
-    void setStatistique(int s) { this->statistique = s; }
+    virtual int getAlteration() { return this->alteration; }
+    virtual int getStatistique() { return this->statistique; }
+    void setAlteration() { this->alteration = alteration; }
+    void setStatistique() { this->statistique = statistique; }
     virtual void afficher();
 
 };

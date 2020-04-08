@@ -4,8 +4,7 @@
 #include <string>
 using namespace std;
 
-
-class carteElixir : public carte
+class carteTalisman : public carte
 {
 private:
     string nomStat;
@@ -14,7 +13,7 @@ private:
     int statistique;
 public:
 
-    carteElixir(string nom, string nomStat, string niveau, int a, int s);
+    carteTalisman(string nom, string nomStat, string niveau, int a, int s);
     string getNomStat() { return this->nomStat; }
     void setNomStat(std::string nomStat) { this->nomStat = nomStat; }
     string getNiveau() { return this->niveau; }
