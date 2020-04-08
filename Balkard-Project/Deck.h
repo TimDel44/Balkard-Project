@@ -15,7 +15,7 @@ public:
 
 	vector<carte*> getPioche() { return this->cartesPioche; }
 
-	//carte* getCarte() { return this->cartes; }
+	vector<carte*> getCarte() { return this->cartes; }
 	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
 
 
@@ -23,6 +23,8 @@ public:
 	void afficherDeck();
 	void pioche();
 	void afficherPioche();
+	void checkTaille();
+	void suppCarte();
 
 };
 

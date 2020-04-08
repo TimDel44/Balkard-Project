@@ -36,6 +36,7 @@ public:
 	int getPossedeSort() { return this->possedeSort; }
 	int getPossedeRituel() { return this->possedeRituel; }
 	int getPossedeItem() { return this->possedeSort; }
+	vector<carte*> getMain() { return this->main; }
 
 	void setArgent() { this->argent = argent; }
 	void setActif() { this->actif = actif; }

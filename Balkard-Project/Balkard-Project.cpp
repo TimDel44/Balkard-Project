@@ -4,12 +4,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-#include "carteElixir.h"
-#include "cartePotion.h"
-#include "carteSort.h"
-#include "carte.h"
-
 #include <cstdlib>
 #include <ctime>
 #ifdef _WIN32
@@ -18,7 +12,11 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdlib.h>
-#include <ctime>
+
+#include "carteElixir.h"
+#include "cartePotion.h"
+#include "carteSort.h"
+#include "carte.h"
 
 #include "personnage.h"
 #include "carteArgent.h"
@@ -30,11 +28,14 @@
 
 using namespace std;
 
-
-
+/*void Color(int couleurDuTexte, int couleurDeFond) {
+    HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H, couleurDeFond * 16 + couleurDuTexte);
+}
+*/
 int main()
 {
-
+    
     srand(time(NULL));
 
     cout << " 888888ba  oo                                                                                                 888888ba           dP dP                               dP" << endl;
@@ -47,7 +48,7 @@ int main()
     Deck* deck= new Deck;
     deck->melangerDeck();
     deck->afficherDeck();
-    deck->pioche();
+    //deck->pioche();
     //deck->afficherPioche();
 
     string nom;
@@ -67,6 +68,7 @@ int main()
     joueur* player2 = new joueur(perso2);
 
     player1->joueurPiocher(deck);
+    player2->joueurPiocher(deck);
     string pause;
     cin >> pause;
     player1->joueurCombat(player2);

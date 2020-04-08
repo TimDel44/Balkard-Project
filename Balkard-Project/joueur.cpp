@@ -15,6 +15,7 @@
 #include "graphics.h"
 #include <ctime>
 #include "Deck.h"
+#include "carte.h"
 
 joueur::joueur(personnage* perso) {
 	this->actif = 1;
@@ -138,16 +139,22 @@ void joueur::debutDeCombat(joueur* cible) {
 }
 
 void joueur::joueurPiocher(Deck* deck){
-	int i;
-	for (i = 0; i < deck->getPioche().size(); i++) {
+	//deck->pioche();
+	/*for (i = 0; i < deck->getPioche().size(); i++) {
 		deck->getPioche().operator[](i)->afficher();
+	}*/
+	for (int i = 0; i < 4; i++) {
+		this->main.push_back(deck->getCarte()[i/*deck->getCarte().size() - (1 + i)*/]);
+		//deck->getCarte().erase(deck->getPioche().begin());
+		deck->suppCarte();
+		this->main[i]->afficher();
 	}
 	//vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
 	/*this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
 	for (i = 0; i < this->main.size(); i++) {
 		main[i]->afficher();
 	}*/
-	cout << endl;
+	//cout <<" "<< this->main << endl;
 }
 
 
