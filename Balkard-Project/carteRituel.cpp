@@ -1,6 +1,5 @@
 #include "carteRituel.h"
 #include <iostream>
-#include "rituel.h"
 #include "carte.h"
 #include <string>
 using namespace std;
