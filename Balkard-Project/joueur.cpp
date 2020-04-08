@@ -86,7 +86,7 @@ void joueur::subir(int degats) {
 	int jetEsquive = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'esquive de " << jetEsquive << endl;
 	if (jetEsquive + this->perso->getEsquive() < degats) {
-		this->perso->setVie((this->perso->getVie() - degats));
+		this->perso->setVie((this->perso->getVie() - (degats - this->perso->getDefense()/2)));
 		printf("%s a subis %d points de degats !", this->perso->getNom().c_str(), degats);
 		//cout << this->nom << " a subis " << degats << ' points de degats !' << endl;
 		//int vieActuelle = this->perso->getVie();
