@@ -163,12 +163,21 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 				cout << "choisissez un nombre valide" << endl;
 				cin >> choix;
 			}
+			joueurActiverCarte(cible, deck, choix);
 			this->main.erase(main.begin() + choix - 1);
 			this->perso->setPA(this->perso->getPA() - 1);
 			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 		}
 	}
 }
+
+void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
+	if (this->main[choix-1]->getStatistique() == 0) {
+		this->perso->setVie(this->perso->getVie() + this->main[choix-1]->getAlteration() * 10);
+		cout << "vous vous etes soigne de " << this->main[choix - 1]->getAlteration()*10 << " Points de vie !" << endl;
+	}
+}
+
 void joueur::joueurPiocher(Deck* deck){
 	
 	for (int i = 0; i < 4; i++) {

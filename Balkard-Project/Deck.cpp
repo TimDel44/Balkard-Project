@@ -34,7 +34,7 @@ Deck::Deck()
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             for (s = 0; s < 4; s++) {
-                cartes.push_back(new cartePotion(objet[0], stat[s], niveau[a], a, s));
+                cartes.push_back(new cartePotion(objet[0], stat[s], niveau[a], a+1, s));
             }
         }
     }
@@ -43,7 +43,7 @@ Deck::Deck()
         b = 1;
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             for (s = 0; s < 4; s++) {
-                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a, s));
+                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+1, s));
             }
         }
     }

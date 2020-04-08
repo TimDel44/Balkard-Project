@@ -60,6 +60,7 @@ public:
 
 	void joueurPiocher(Deck* deck);
 	void joueurJouerCarte(joueur*, Deck*);
+	void joueurActiverCarte(joueur*, Deck*, int);
 	//void choisirCarte();
 	//void afficherMain();
 
