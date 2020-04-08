@@ -86,7 +86,7 @@ void joueur::subir(int degats) {
 	int jetEsquive = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'esquive de " << jetEsquive << endl;
 	if (jetEsquive + this->perso->getEsquive() < degats) {
-		this->perso->setVie((this->perso->getVie() - degats));
+		this->perso->setVie((this->perso->getVie() - (degats - this->perso->getDefense()/2)));
 		printf("%s a subis %d points de degats !", this->perso->getNom().c_str(), degats);
 		//cout << this->nom << " a subis " << degats << ' points de degats !' << endl;
 		//int vieActuelle = this->perso->getVie();
@@ -141,10 +141,10 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	this->joueurPiocher(deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
-	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
+	//for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
 	this->joueurJouerCarte(cible, deck);
 	cout << "Joueur 2, voici vos cartes :" << endl;
-	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
+	//for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
 	cible->joueurJouerCarte(cible, deck);
 		if (this->possedeItem == 1) {
 
@@ -157,6 +157,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
 	if (this->main.size() != 0) {
 		while (this->perso->getPA() != 0) {
+			for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
 			cout << "choisissez une carte a jouer" << endl;
 			cin >> choix;
 			while (choix > main.size()) {
@@ -169,6 +170,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 		}
 	}
+	this->main.clear();
 }
 
 void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
@@ -182,8 +184,8 @@ void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 		this->perso->setDefense(this->perso->getDefense() + this->main[choix - 1]->getAlteration() * 5);
 		cout << "vous augmentez votre defense de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 3) {
-		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 10);
-		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 10 << " points d'esquive!" << endl;
+		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 5);
+		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive!" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 6) {
 		this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
 		cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;

@@ -43,7 +43,7 @@ Deck::Deck()
         b = 1;
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             for (s = 0; s < 4; s++) {
-                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+1, s));
+                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+3, s));
             }
         }
     }
@@ -56,22 +56,22 @@ Deck::Deck()
     for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-             cartes.push_back(new carteArmure(objet[3], stat[2], materiauArmure[a], a, 2));
-             cartes.push_back(new carteBotte(objet[4], stat[2], materiauArmure[a], a, 2));
+             cartes.push_back(new carteArmure(objet[3], stat[2], materiauArmure[a], a+1, 2));
+             cartes.push_back(new carteBotte(objet[4], stat[2], materiauArmure[a], a+1, 2));
         }
     }
     //CARTE ARME
     for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-            cartes.push_back(new carteArme(objet[5], stat[1], materiauArme[a], a, 1));
+            cartes.push_back(new carteArme(objet[5], stat[1], materiauArme[a], a+1, 1));
         }
     }
     //CARTE TALISMAN
     for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a, 6));
+            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
         }
     }
     /*
