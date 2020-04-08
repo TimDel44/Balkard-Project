@@ -17,7 +17,7 @@
 Deck::Deck()
 {
     string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
-    string stat[4] = { "Vie", "Attaque", "Defense", "Esquive" };
+    string stat[5] = { "Vie", "Attaque", "Defense", "Esquive","Percept\." };
     string niveau[3] = { "I", "II", "III" };
     string materiauArmure[3] = { "Cuir", "Fer", "Or" };
     string materiauArme[3] = { "Bois","Fer","Or" };
@@ -30,7 +30,7 @@ Deck::Deck()
     this->cartesPioche;
     this->cartes;
     //CARTE POTION
-    for (a = 0; a < 2; a++) {
+    for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             for (s = 0; s < 4; s++) {
@@ -39,19 +39,21 @@ Deck::Deck()
         }
     }
     //CARTE ELIXIR
-    for (a = 0; a < 1; a++) {
-        b = 1;
+    for (a = 0; a < 2; a++) {
+        b = (2 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-            for (s = 0; s < 4; s++) {
+            for (s = 0; s < 5; s++) {
                 cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+3, s));
             }
         }
     }
     //CARTE ARGENT
+    /*
     for (i = 0; i < 14; i++) {
         valeur = rand() % 90 + 10;
         cartes.push_back(new carteArgent(objet[2], valeur));
     }
+    */
     //CARTE ARMURE et BOTTE
     for (a = 0; a < 3; a++) {
         b = (3 - a);
@@ -68,12 +70,14 @@ Deck::Deck()
         }
     }
     //CARTE TALISMAN
+    /*
     for (a = 0; a < 3; a++) {
         b = (3 - a);
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
         }
     }
+    */
     /*
     for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];

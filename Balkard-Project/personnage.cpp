@@ -17,12 +17,12 @@ using namespace std;
 personnage::personnage(string nom)
 {
 	this->nom = nom;
-	this->vie = 50;
+	this->vie = 100;
 	this->attaque = 5;
 	this->defense = 5;
 	this->esquive = 2;
 	this->initiative = 3;
-	this->perception = 3;
+	this->perception = 4;
 	this->pa = 3;
 }
 
