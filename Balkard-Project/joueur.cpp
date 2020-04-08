@@ -182,8 +182,8 @@ void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 		this->perso->setDefense(this->perso->getDefense() + this->main[choix - 1]->getAlteration() * 5);
 		cout << "vous augmentez votre defense de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 3) {
-		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 10);
-		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 10 << " points d'esquive!" << endl;
+		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 5);
+		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive!" << endl;
 	}else if (this->main[choix - 1]->getStatistique() == 6) {
 		this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
 		cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;
