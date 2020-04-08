@@ -5,12 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "carteElixir.h"
-#include "cartePotion.h"
-#include "carteSort.h"
-#include "rituel.h"
-#include "carte.h"
-
 #include <cstdlib>
 #include <ctime>
 #ifdef _WIN32
@@ -19,49 +13,67 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdlib.h>
-#include <ctime>
+
+#include "carteElixir.h"
+#include "cartePotion.h"
+#include "carteSort.h"
+#include "carteRituel"
+#include "carte.h"
 
 #include "personnage.h"
 #include "carteArgent.h"
 #include "joueur.h"
+#include "Deck.h"
+#include "Titre.h"
+#include "graphics.h"
 
 
 using namespace std;
 
+/*void Color(int couleurDuTexte, int couleurDeFond) {
+    HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H, couleurDeFond * 16 + couleurDuTexte);
+}
+*/
 int main()
 {
-
+    
     srand(time(NULL));
-    cout << "Bienvenue sur Balkard...\n" << endl;
+
+    cout << " 888888ba  oo                                                                                                 888888ba           dP dP                               dP" << endl;
+    cout << " 88    `8b                                                                                                    88    `8b          88 88                               88" << endl;
+    cout << " 88aaaa8P' dP .d8888b. 88d888b. dP   .dP .d8888b. 88d888b. dP    dP .d8888b.    .d8888b. dP    dP 88d888b.    88aaaa8P' .d8888b. 88 88  .dP  .d8888b. 88d888b. .d888b88" << endl;
+    cout << " 88   `8b. 88 88ooood8 88'  `88 88   d8' 88ooood8 88'  `88 88    88 88ooood8    Y8ooooo. 88    88 88'  `88    88   `8b. 88'  `88 88 88888\"   88\'  `88 88'  `88 88\'  `88" << endl;
+    cout << " 88    .88 88 88.  ... 88    88 88 .88'  88.  ... 88    88 88.  .88 88.  ...          88 88.  .88 88          88    .88 88.  .88 88 88  `8b. 88.  .88 88       88.  .88" << endl;
+    cout << " 88888888P dP `88888P' dP    dP 8888P'   `88888P' dP    dP `88888P' `88888P'    `88888P' `88888P' dP          88888888P `88888P8 dP dP   `YP `88888P8 dP       `88888P8    88    88    88 "<< endl;
+    //new Titre();
+    Deck* deck= new Deck;
+    deck->melangerDeck();
+    //deck->afficherDeck();
+    //deck->pioche();
+    //deck->afficherPioche();
 
     string nom;
     cout << "Entrez le nom du joueur\n" << endl;
     cin >> nom;
+    system("cls");
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
-    player1->afficherJoueur();
+
+    //player1->choisirCarte();
+    //player1->afficherMain();
+
    
 
     personnage* perso2 = new personnage("DHB");
     joueur* player2 = new joueur(perso2);
 
-    player1->joueurCombat(player2);
-    //perso1->combat(perso2);
-
+    //string pause;
+    //cin >> pause;
+    player1->joueurCombat(player2, deck);
 
     return 0;
-    int a = 0;
-    int s = 0;
-    vector<carte*> cartes;
-    cartes.push_back(new cartePotion("PotionVieII", 2, 1));
-    cartes.push_back(new carteElixir("ElixirAttI", 1, 2));
-    cartes.push_back(new cartePotion("PotionDefIII", 3, 3));
-
-    cartes[0]->afficher();
-    cartes[1]->afficher();
-    cartes[2]->afficher();
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,12 +1,37 @@
-#include <iostream>
+
 #include "carteElixir.h"
 #include "carte.h"
+
+#include <iostream>
 #include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <algorithm>
+#include <iomanip>
+#include <stdlib.h>
+
 using namespace std;
 
-carteElixir::carteElixir(string nom, int a, int s) :carte(nom), alteration(a), statistique(s) {}
+carteElixir::carteElixir(string nom, string nomStat, string niveau, int a, int s) :carte(nom),nomStat(nomStat), niveau(niveau), alteration(a), statistique(s) {}
 
 void carteElixir::afficher()
 {
-	cout << " nom : " << this->getNom() << " alte : " << this->alteration << " stat : " << this->statistique << endl;
+	//cout << this->getNom() << this->nomStat << this->niveau << endl;
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 1);
+	cout << "	-------------------" << endl;
+	cout << "	|     " << "Elixir"/*this->getNom()*/ << "      |" << endl;
+	cout << "	-------------------" << endl;
+	printf("	|                 |\n");
+	printf("	| stat : %-8s |\n", this->getNomStat().c_str());
+	printf("	|                 |\n");
+	printf("	| niveau : %-6s |\n", this->getNiveau().c_str());
+	printf("	|                 |\n");
+	printf("	|                 |\n");
+	printf("	|                 |\n");
+	cout << "	-------------------" << endl;
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 }

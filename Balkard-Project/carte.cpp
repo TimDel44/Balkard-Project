@@ -11,5 +11,17 @@ carte::carte(string nom)
 
 void carte::afficher() 
 {
-	cout << " nom : " << this->getNom() << endl;
+	/*cout << "	-------------------" << endl;
+	printf("	| nom : %-9d |\n", this->getNom().c_str());
+	cout << "	-------------------" << endl;
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	printf("	| %-15d |\n");
+	cout << "	-------------------" << endl;/**/
 }
+
+carte::~carte(){}
