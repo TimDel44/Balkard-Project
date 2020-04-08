@@ -55,10 +55,11 @@ public:
 	void initierCombat(joueur*, Deck*);
 
 	void clear();
-	void finDeCombat(joueur*);
+	void finDeCombat(joueur*, Deck*);
 	void debutDeCombat(joueur*, Deck*);
 
 	void joueurPiocher(Deck* deck);
+	void joueurJouerCarte(joueur*, Deck*);
 	//void choisirCarte();
 	//void afficherMain();
 
