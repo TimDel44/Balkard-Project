@@ -137,6 +137,7 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
 	this->joueurPiocher(deck);
+	this->joueurJouerCarte(cible, deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
 	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
@@ -156,6 +157,8 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
 	cout << "choisissez une carte à jouer" << endl;
+	cin >> choix;
+	//this->main.erase(choix);
 }
 void joueur::joueurPiocher(Deck* deck){
 	//deck->pioche();
