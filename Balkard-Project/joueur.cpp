@@ -15,6 +15,7 @@
 #include "graphics.h"
 #include <ctime>
 #include "Deck.h"
+#include "carte.h"
 
 joueur::joueur(personnage* perso) {
 	this->actif = 1;
@@ -30,17 +31,17 @@ void joueur::afficherJoueur() {
 	cout << this->perso->personnage::getNom() << endl;
 }
 
-void joueur::joueurCombat(joueur* cible) {
+void joueur::joueurCombat(joueur* cible, Deck* deck) {
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
 
 		this->perso->afficher();
 
-		printf("\n---------------------------------------------\n");
+		printf("\n					   ---------------------------------------------\n");
 
 		cible->perso->afficher();
 
 
-		this->initierCombat(cible);
+		this->initierCombat(cible, deck);
 
 		printf("\n\n\n");
 		system("cls");
@@ -50,7 +51,7 @@ void joueur::joueurCombat(joueur* cible) {
 
 	this->perso->afficher();
 
-	printf("\n------------------------------------------------------\n");
+	printf("\n					   ------------------------------------------------------\n");
 
 	cible->perso->afficher();
 }
@@ -101,8 +102,8 @@ int joueur::jetInitierCombat() {
 	return jetInitiative + this->perso->getInitiative();
 }
 
-void joueur::initierCombat(joueur* cible) {
-	debutDeCombat(cible);
+void joueur::initierCombat(joueur* cible, Deck* deck) {
+	debutDeCombat(cible, deck);
 	if (this->jetInitierCombat() > cible->jetInitierCombat()) {
 		this->attaquer(cible);
 		cible->attaquer(this);
@@ -113,7 +114,6 @@ void joueur::initierCombat(joueur* cible) {
 		this->attaquer(cible);
 		finDeCombat(cible);
 	}
-
 }
 
 void joueur::finDeCombat(joueur* cible) {
@@ -127,8 +127,18 @@ void joueur::finDeCombat(joueur* cible) {
 	cout << "\n fin du tour" << endl;
 	Sleep(5000);
 }
-void joueur::debutDeCombat(joueur* cible) {
+void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
+	this->joueurPiocher(deck);
+	cible->joueurPiocher(deck);
+	cout << "Joueur 1, voici vos cartes :" << endl;
+	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
+	string pause;
+	cin >> pause;
+	cout << "Joueur 2, voici vos cartes :" << endl;
+	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
+	string pause1;
+	cin >> pause1;
 		if (this->possedeItem == 1) {
 
 			cout << "\n jouez une carte Item" << endl;
@@ -138,16 +148,22 @@ void joueur::debutDeCombat(joueur* cible) {
 }
 
 void joueur::joueurPiocher(Deck* deck){
-	int i;
-	for (i = 0; i < deck->getPioche().size(); i++) {
+	//deck->pioche();
+	/*for (i = 0; i < deck->getPioche().size(); i++) {
 		deck->getPioche().operator[](i)->afficher();
+	}*/
+	for (int i = 0; i < 4; i++) {
+		this->main.push_back(deck->getCarte()[i/*deck->getCarte().size() - (1 + i)*/]);
+		//deck->getCarte().erase(deck->getPioche().begin());
+		deck->suppCarte();
+		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
 	//vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
 	/*this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
 	for (i = 0; i < this->main.size(); i++) {
 		main[i]->afficher();
 	}*/
-	cout << endl;
+	//cout <<" "<< this->main << endl;
 }
 
 

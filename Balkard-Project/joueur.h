@@ -36,6 +36,7 @@ public:
 	int getPossedeSort() { return this->possedeSort; }
 	int getPossedeRituel() { return this->possedeRituel; }
 	int getPossedeItem() { return this->possedeSort; }
+	vector<carte*> getMain() { return this->main; }
 
 	void setArgent() { this->argent = argent; }
 	void setActif() { this->actif = actif; }
@@ -47,15 +48,15 @@ public:
 
 	joueur(personnage* perso);
 	void afficherJoueur();
-	void joueurCombat(joueur* cible);
+	void joueurCombat(joueur* cible, Deck*);
 	void attaquer(joueur*);
 	void subir(int degats);
 	int jetInitierCombat();
-	void initierCombat(joueur*);
+	void initierCombat(joueur*, Deck*);
 
 	void clear();
 	void finDeCombat(joueur*);
-	void debutDeCombat(joueur*);
+	void debutDeCombat(joueur*, Deck*);
 
 	void joueurPiocher(Deck* deck);
 	//void choisirCarte();

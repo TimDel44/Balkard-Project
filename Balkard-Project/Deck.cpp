@@ -45,10 +45,6 @@ Deck::Deck()
         cartes.push_back(new carteArgent(objet[2], valeur));
     }
 
-    
-
-
-
     /*for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];
     }*/
@@ -66,12 +62,19 @@ void Deck::afficherDeck() {
     cartes.size();
     cout << endl;
 }
-void Deck::pioche() {
+void Deck::suppCarte() {
+    this->cartes.erase(cartes.begin());
+}
+/*void Deck::pioche() {
+    this->cartesPioche.clear();
    // this->cartesPioche;
     for (int i = 0; i < 4; i++) {
         this->cartesPioche.push_back(cartes[cartes.size()-(1+i)]);
         this->cartes.pop_back();
     }
+}*/
+void Deck::checkTaille() {
+   cout << this->cartes.size() << endl;
 }
 /*void Deck::afficherPioche() {
     int i;
