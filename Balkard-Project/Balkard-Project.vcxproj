@@ -148,16 +148,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
-
     <ClCompile Include="carte.cpp" />
     <ClCompile Include="carteElixir.cpp" />
     <ClCompile Include="cartePotion.cpp" />
+    <ClCompile Include="carteRituel.cpp" />
     <ClCompile Include="carteSort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
     <ClInclude Include="carteElixir.h" />
     <ClInclude Include="cartePotion.h" />
+    <ClInclude Include="carteRituel.h" />
     <ClInclude Include="carteSort.h" />
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
