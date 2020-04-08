@@ -137,16 +137,13 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
 	this->joueurPiocher(deck);
-	this->joueurJouerCarte(cible, deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
 	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
-	string pause;
-	cin >> pause;
+	this->joueurJouerCarte(cible, deck);
 	cout << "Joueur 2, voici vos cartes :" << endl;
 	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
-	string pause1;
-	cin >> pause1;
+	cible->joueurJouerCarte(cible, deck);
 		if (this->possedeItem == 1) {
 
 			cout << "\n jouez une carte Item" << endl;
@@ -156,19 +153,33 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 }
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
-	cout << "choisissez une carte à jouer" << endl;
-	cin >> choix;
-	//this->main.erase(choix);
+	if (this->main.size() != 0) {
+		cout << "choisissez une carte a jouer" << endl;
+		cin >> choix;
+		if (choix < main.size()) {
+			this->main.erase(main.begin() + choix - 1);
+		}
+		else {
+			cout << "choisissez un nombre valide" << endl;
+			cin >> choix;
+		}
+	}
 }
 void joueur::joueurPiocher(Deck* deck){
-	//deck->pioche();
+	
+	for (int i = 0; i < 4; i++) {
+		if (deck->getCarte().size() > 4) {
+			this->main.push_back(deck->getCarte()[i]); /*deck->getCarte().size() - (1 + i)*/
+			//deck->getCarte().erase(deck->getPioche().begin());
+			deck->suppCarte();
+		}
+		else {
+			cout << "Il n\'y a plus de cartes !" << endl;
+		}
+		//deck->pioche();
 	/*for (i = 0; i < deck->getPioche().size(); i++) {
 		deck->getPioche().operator[](i)->afficher();
 	}*/
-	for (int i = 0; i < 4; i++) {
-		this->main.push_back(deck->getCarte()[i/*deck->getCarte().size() - (1 + i)*/]);
-		//deck->getCarte().erase(deck->getPioche().begin());
-		deck->suppCarte();
 		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
 	//vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
