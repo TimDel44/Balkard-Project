@@ -43,7 +43,7 @@ Deck::Deck()
         b = 1;
         for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
             for (s = 0; s < 4; s++) {
-                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+1, s));
+                cartes.push_back(new carteElixir(objet[1], stat[s], niveau[a], a+3, s));
             }
         }
     }

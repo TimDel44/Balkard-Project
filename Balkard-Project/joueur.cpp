@@ -141,10 +141,10 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	this->joueurPiocher(deck);
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
-	for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
+	//for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
 	this->joueurJouerCarte(cible, deck);
 	cout << "Joueur 2, voici vos cartes :" << endl;
-	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
+	//for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
 	cible->joueurJouerCarte(cible, deck);
 		if (this->possedeItem == 1) {
 
@@ -157,6 +157,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
 	if (this->main.size() != 0) {
 		while (this->perso->getPA() != 0) {
+			for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
 			cout << "choisissez une carte a jouer" << endl;
 			cin >> choix;
 			while (choix > main.size()) {
@@ -169,6 +170,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 			cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 		}
 	}
+	this->main.clear();
 }
 
 void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
