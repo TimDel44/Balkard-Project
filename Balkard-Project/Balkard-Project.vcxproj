@@ -149,20 +149,30 @@
   <ItemGroup>
     <ClCompile Include="Balkard-Project.cpp" />
     <ClCompile Include="carte.cpp" />
+    <ClCompile Include="carteArme.cpp" />
+    <ClCompile Include="carteArmure.cpp" />
+    <ClCompile Include="carteBotte.cpp" />
     <ClCompile Include="carteElixir.cpp" />
     <ClCompile Include="cartePotion.cpp" />
+    <ClCompile Include="carteRituel.cpp" />
     <ClCompile Include="carteSort.cpp" />
+    <ClCompile Include="carteTalisman.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="Titre.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
+    <ClInclude Include="carteArme.h" />
+    <ClInclude Include="carteArmure.h" />
+    <ClInclude Include="carteBotte.h" />
     <ClInclude Include="carteElixir.h" />
     <ClInclude Include="cartePotion.h" />
+    <ClInclude Include="carteRituel.h" />
     <ClInclude Include="carteSort.h" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="personnage.cpp" />
+    <ClInclude Include="carteTalisman.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="Titre.h" />
   </ItemGroup>
