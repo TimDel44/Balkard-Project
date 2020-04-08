@@ -23,7 +23,7 @@ cartePotion::cartePotion(string nom, string nomStat, string niveau, int a, int s
 
 void cartePotion::afficher()
 {
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 	cout << "	-------------------" << endl;
 	cout << "	|     " << "Potion"/*this->getNom()*/ << "      |" << endl;
 	cout << "	-------------------" << endl;
@@ -35,6 +35,6 @@ void cartePotion::afficher()
 	printf("	|                 |\n");
 	printf("	|                 |\n");
 	cout << "	-------------------" << endl;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
 	//cout << this->getNom() << this->nomStat << this->niveau << endl;
 }

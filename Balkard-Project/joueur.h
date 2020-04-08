@@ -48,15 +48,15 @@ public:
 
 	joueur(personnage* perso);
 	void afficherJoueur();
-	void joueurCombat(joueur* cible);
+	void joueurCombat(joueur* cible, Deck*);
 	void attaquer(joueur*);
 	void subir(int degats);
 	int jetInitierCombat();
-	void initierCombat(joueur*);
+	void initierCombat(joueur*, Deck*);
 
 	void clear();
 	void finDeCombat(joueur*);
-	void debutDeCombat(joueur*);
+	void debutDeCombat(joueur*, Deck*);
 
 	void joueurPiocher(Deck* deck);
 	//void choisirCarte();

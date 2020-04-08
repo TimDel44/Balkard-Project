@@ -21,7 +21,7 @@ carteElixir::carteElixir(string nom, string nomStat, string niveau, int a, int s
 void carteElixir::afficher()
 {
 	//cout << this->getNom() << this->nomStat << this->niveau << endl;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 1);
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 1);
 	cout << "	-------------------" << endl;
 	cout << "	|     " << "Elixir"/*this->getNom()*/ << "      |" << endl;
 	cout << "	-------------------" << endl;
@@ -33,5 +33,5 @@ void carteElixir::afficher()
 	printf("	|                 |\n");
 	printf("	|                 |\n");
 	cout << "	-------------------" << endl;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 }

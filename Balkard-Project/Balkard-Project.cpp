@@ -47,7 +47,7 @@ int main()
     //new Titre();
     Deck* deck= new Deck;
     deck->melangerDeck();
-    deck->afficherDeck();
+    //deck->afficherDeck();
     //deck->pioche();
     //deck->afficherPioche();
 
@@ -67,11 +67,9 @@ int main()
     personnage* perso2 = new personnage("DHB");
     joueur* player2 = new joueur(perso2);
 
-    player1->joueurPiocher(deck);
-    player2->joueurPiocher(deck);
-    string pause;
-    cin >> pause;
-    player1->joueurCombat(player2);
+    //string pause;
+    //cin >> pause;
+    player1->joueurCombat(player2, deck);
 
     return 0;
 }
