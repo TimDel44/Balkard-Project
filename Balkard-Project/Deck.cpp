@@ -17,7 +17,7 @@
 Deck::Deck()
 {
     string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
-    string stat[4] = { "Vie", "Attaque", "Defense", "Percep\." };
+    string stat[4] = { "Vie", "Attaque", "Defense", "Esquive" };
     string niveau[3] = { "I", "II", "III" };
     string materiauArmure[3] = { "Cuir", "Fer", "Or" };
     string materiauArme[3] = { "Bois","Fer","Or" };
