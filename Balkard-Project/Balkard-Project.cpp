@@ -17,7 +17,7 @@
 #include "carteElixir.h"
 #include "cartePotion.h"
 #include "carteSort.h"
-#include "carteRituel"
+#include "carteRituel.h"
 #include "carte.h"
 
 #include "personnage.h"
