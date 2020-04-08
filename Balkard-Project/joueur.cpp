@@ -118,8 +118,8 @@ void joueur::initierCombat(joueur* cible, Deck* deck) {
 
 void joueur::finDeCombat(joueur* cible, Deck* deck) {
 	cout << "\n End Phase" << endl;
-	cout << "Joueur 1, voici vos cartes :" << endl;
-	/*for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
+	/*cout << "Joueur 1, voici vos cartes :" << endl;
+	for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
 	string pause;
 	cin >> pause;
 	cout << "Joueur 2, voici vos cartes :" << endl;
