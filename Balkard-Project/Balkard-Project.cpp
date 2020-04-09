@@ -54,7 +54,7 @@ int main()
     //deck->afficherPioche();
 
     string nom;
-    cout << "\n\n\n\n\n\nEntrez le nom du joueur\n" << endl;
+    cout << "\n\n\n\n\n\nEntrez le nom du joueur 1\n" << endl;
     cin >> nom;
     system("cls");
 
@@ -65,8 +65,11 @@ int main()
     //player1->afficherMain();
 
    
-
-    personnage* perso2 = new personnage("Big \'E\'");
+    string nom2;
+    cout << "\n\n\n\n\n\nEntrez le nom du joueur 2\n" << endl;
+    cin >> nom2;
+    system("cls");
+    personnage* perso2 = new personnage(nom2/*"Big \'E\'"*/);
     joueur* player2 = new joueur(perso2);
 
     //string pause;
