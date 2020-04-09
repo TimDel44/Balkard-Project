@@ -47,10 +47,13 @@ public :
 
 	personnage(string nom);
 	void afficher();
-	//void attaquer(joueur*);
-	//void subir(int degats);
-	//int jetInitierCombat();
-	//void initierCombat(joueur*);
-	//void combat(joueur*);
+	//Déplacer dans joueur
+	/*
+	void attaquer(joueur*);
+	void subir(int degats);
+	int jetInitierCombat();
+	void initierCombat(joueur*);
+	void combat(joueur*);
+	*/
 };
 
