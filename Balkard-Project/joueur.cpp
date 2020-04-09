@@ -93,7 +93,7 @@ void joueur::subir(int degats) {
 		printf("\n%s a subis %d points de degats !\n", this->perso->getNom().c_str(), (degats - this->perso->getDefense() / 4));
 		Sleep(1000);
 		//cout << this->nom << " a subis " << degats << ' points de degats !' << endl;
-		//int vieActuelle = this->perso->getVie();
+		//int vieActuelle = this->perso->getVie(); mista lova lova
 	}
 	else {
 		cout << this->perso->getNom() << " a esquive l'attaque !" << endl;
@@ -176,7 +176,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 				for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
 				cout << "choisissez une carte a jouer" << endl;
 				cin >> choix;
-				while (choix > main.size()) {
+				while (choix > main.size() || choix == 0) {
 					cout << "choisissez un nombre valide" << endl;
 					cin >> choix;
 				}
