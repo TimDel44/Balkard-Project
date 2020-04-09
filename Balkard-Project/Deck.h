@@ -13,7 +13,7 @@ private:
 public:
 	Deck();
 
-	vector<carte*> getPioche() { return this->cartesPioche; }
+	//vector<carte*> getPioche() { return this->cartesPioche; }
 
 	vector<carte*> getCarte() { return this->cartes; }
 	//carte* setCarte(carte* cartes) { this->cartes = cartes; }
@@ -21,8 +21,8 @@ public:
 
 	void melangerDeck();
 	void afficherDeck();
-	void pioche();
-	void afficherPioche();
+	//void pioche();
+	//void afficherPioche();
 	void checkTaille();
 	void suppCarte();
 

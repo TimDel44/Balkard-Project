@@ -41,7 +41,8 @@ void personnage::afficher() {
 	//cout << "| nom : " << this->getNom() << endl;
 }
 
-/*void personnage::attaquer(joueur* cible) {
+/*
+void personnage::attaquer(joueur* cible) {
 	int jetAttaque = rand() % 7;
 	cout << "\n" << this->nom << " se prepare a attaquer !\n" << endl;
 	Sleep(5000);
@@ -115,4 +116,5 @@ void personnage::combat(personnage* cible) {
 	printf("\n------------------------------------------------------\n");
 
 	cible->afficher();
-}*/
+}
+*/

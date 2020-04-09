@@ -61,6 +61,7 @@ public:
 	void joueurPiocher(Deck* deck);
 	void joueurJouerCarte(joueur*, Deck*);
 	void joueurActiverCarte(joueur*, Deck*, int);
+	//Méthode non retenu de choix de carte
 	//void choisirCarte();
 	//void afficherMain();
 

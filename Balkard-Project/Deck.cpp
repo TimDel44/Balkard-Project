@@ -78,6 +78,7 @@ Deck::Deck()
         }
     }
     */
+    //delete de carte, pas utile
     /*
     for (i = 0; i < cartes.size(); i++) {
         delete cartes[i];
@@ -100,21 +101,27 @@ void Deck::afficherDeck() {
 void Deck::suppCarte() {
     this->cartes.erase(cartes.begin());
 }
-/*void Deck::pioche() {
+//Ancienne pioche pas gardée
+/*
+void Deck::pioche() {
     this->cartesPioche.clear();
    // this->cartesPioche;
     for (int i = 0; i < 4; i++) {
         this->cartesPioche.push_back(cartes[cartes.size()-(1+i)]);
         this->cartes.pop_back();
     }
-}*/
+}
+*/
 void Deck::checkTaille() {
    cout << this->cartes.size() << endl;
 }
-/*void Deck::afficherPioche() {
+//Ancien affichage de pioche pas gardé
+/*
+void Deck::afficherPioche() {
     int i;
     for (i = 0; i < 7; i++) {
         cartesPioche[i]->afficher();
     }
-}*/
+}
+*/
 

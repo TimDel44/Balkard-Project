@@ -26,11 +26,11 @@ joueur::joueur(personnage* perso) {
 	this->possedeSort = 0;
 	this->possedeItem = 0;
 }
-
+//AFFICHAGE JOUEUR
 void joueur::afficherJoueur() {
 	cout << this->perso->personnage::getNom() << endl;
 }
-
+//BOUCLE DE COMBAT
 void joueur::joueurCombat(joueur* cible, Deck* deck) {
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
 
@@ -55,6 +55,7 @@ void joueur::joueurCombat(joueur* cible, Deck* deck) {
 
 	cible->perso->afficher();
 }
+//ATTAQUE
 void joueur::attaquer(joueur* cible) {
 	int jetAttaque = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " se prepare a attaquer !\n" << endl;
@@ -83,7 +84,7 @@ void joueur::attaquer(joueur* cible) {
 		cout << this->perso->getNom() << " a rate son attaque !" << endl;
 	}
 }
-
+//DEGATS SUBIS
 void joueur::subir(int degats) {
 	int jetEsquive = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'esquive de " << jetEsquive << endl;
@@ -100,13 +101,13 @@ void joueur::subir(int degats) {
 		Sleep(1000);
 	}
 }
-
+//JET D'INITIATIVE
 int joueur::jetInitierCombat() {
 	int jetInitiative = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'initiative de " << jetInitiative << endl;
 	return jetInitiative + this->perso->getInitiative();
 }
-
+//CHOIX DU JOUEUR QUI ATTAQUE EN PREMIER
 void joueur::initierCombat(joueur* cible, Deck* deck) {
 	debutDeCombat(cible, deck);
 	system("cls");
@@ -126,16 +127,19 @@ void joueur::initierCombat(joueur* cible, Deck* deck) {
 		finDeCombat(cible, deck);
 	}
 }
-
+//FIN DU COMBAT (AFFICHAGE DES JOUEUR ET CARTE RITUEL(pas mis en place))
 void joueur::finDeCombat(joueur* cible, Deck* deck) {
 	cout << "\n End Phase" << endl;
-	/*cout << "Joueur 1, voici vos cartes :" << endl;
+	//Affichage de la main à la fin du tour
+	/*
+	cout << "Joueur 1, voici vos cartes :" << endl;
 	for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
 	string pause;
 	cin >> pause;
 	cout << "Joueur 2, voici vos cartes :" << endl;
 	for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
-	cin >> pause;*/
+	cin >> pause;
+	*/
 	if (this->possedeRituel == 1) {
 
 		cout << "\n jouez une carte Rituel" << endl;
@@ -150,6 +154,7 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 	cible->perso->afficher();
 	Sleep(5000);
 }
+//DEBUT DU COMBAT (PIOCHER ET UTILISER CARTE)
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cout << "Starting Phase" << endl;
 	this->perso->setPA(3);
@@ -169,6 +174,7 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 
 		}
 }
+//CHOIX DE LA CARTE A JOUER
 void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	int choix;
 		if (this->main.size() != 0) {
@@ -189,6 +195,7 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
 	this->main.clear();
 }
 
+//MISE EN PLACE DES EFFETS DES POTIONS
 void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 	if (this->main[choix-1]->getStatistique() == 0) {
 		this->perso->setVie(this->perso->getVie() + this->main[choix-1]->getAlteration() * 10);
@@ -211,6 +218,7 @@ void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
 	}
 }
 
+//PIOCHE DES CARTES ET SUPPRESSION DE LA CARTE DANS LE DECK
 void joueur::joueurPiocher(Deck* deck){
 	
 	for (int i = 0; i < this->perso->getPerception(); i++) {
@@ -222,12 +230,17 @@ void joueur::joueurPiocher(Deck* deck){
 		else {
 			cout << "Il n\'y a plus de cartes !" << endl;
 		}
-		//deck->pioche();
-	/*for (i = 0; i < deck->getPioche().size(); i++) {
+	//Ancienne méthode utilisant pioche[]
+	/*
+	deck->pioche();
+	for (i = 0; i < deck->getPioche().size(); i++) {
 		deck->getPioche().operator[](i)->afficher();
-	}*/
-		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
 	}
+	
+		//this->main[i]->afficher();    <---- afficher la main (mettre main[main.size()]
+		*/
+	}
+	//Ancienne méthode utilisant pioche[]
 	/*
 	vector<carte*> main2(deck->getPioche().begin(), deck->getPioche().end());
 	this->main.push_back(deck->getPioche().begin(), deck->getPioche().end());
@@ -239,7 +252,7 @@ void joueur::joueurPiocher(Deck* deck){
 }
 
 
-
+//CLEAR DE LA MAIN A LA FIN DES TOURS
 void joueur::clear() {
 	COORD topLeft = { 0, 0 };
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -256,8 +269,9 @@ void joueur::clear() {
 	SetConsoleCursorPosition(console, topLeft);
 }
 
-
-/*void joueur::choisirCarte() {
+//Choix carte & afficher main modifié
+/*
+void joueur::choisirCarte() {
 	this->cartesPioche;
 	this->main;
 	int a;
@@ -270,5 +284,6 @@ void joueur::afficherMain() {
 	for (i = 0; i < main.size(); i++) {
 		main[i]->afficher();
 	}
-}*/
+}
+*/
 
