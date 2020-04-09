@@ -64,12 +64,14 @@ void joueur::attaquer(joueur* cible) {
 		//>> cin
 
 	}
-	Sleep(5000);
+	Sleep(2000);
 	cout << this->perso->getNom() << " a fait un jet d'attaque de " << jetAttaque << endl;
+	Sleep(2000);
 	int jetCritique = rand() % 101;
 	if (jetAttaque != 0) {
 		if (jetCritique > 89) {
 			cout << "\n" << this->perso->getNom() << " a fait un fait un coup critique !" << endl;
+			Sleep(500);
 			cible->subir(this->perso->getAttaque() * 1.25 + jetAttaque * 1.25);
 		}
 		else {
@@ -85,14 +87,17 @@ void joueur::attaquer(joueur* cible) {
 void joueur::subir(int degats) {
 	int jetEsquive = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'esquive de " << jetEsquive << endl;
+	Sleep(2000);
 	if (jetEsquive + this->perso->getEsquive() < degats) {
 		this->perso->setVie((this->perso->getVie() - (degats - this->perso->getDefense()/2)));
 		printf("%s a subis %d points de degats !", this->perso->getNom().c_str(), (degats - this->perso->getDefense() / 2));
+		Sleep(1000);
 		//cout << this->nom << " a subis " << degats << ' points de degats !' << endl;
 		//int vieActuelle = this->perso->getVie();
 	}
 	else {
 		cout << this->perso->getNom() << " a esquive l'attaque !" << endl;
+		Sleep(1000);
 	}
 }
 
@@ -104,6 +109,12 @@ int joueur::jetInitierCombat() {
 
 void joueur::initierCombat(joueur* cible, Deck* deck) {
 	debutDeCombat(cible, deck);
+	system("cls");
+	this->perso->afficher();
+
+	printf("\n					   ---------------------------------------------\n");
+
+	cible->perso->afficher();
 	if (this->jetInitierCombat() > cible->jetInitierCombat()) {
 		this->attaquer(cible);
 		cible->attaquer(this);
@@ -132,6 +143,11 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 
 	}
 	cout << "\n fin du tour" << endl;
+	this->perso->afficher();
+
+	printf("\n					   ---------------------------------------------\n");
+
+	cible->perso->afficher();
 	Sleep(5000);
 }
 void joueur::debutDeCombat(joueur* cible, Deck* deck) {
