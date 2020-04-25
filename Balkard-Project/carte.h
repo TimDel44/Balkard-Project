@@ -11,9 +11,11 @@ protected:
 	int alteration;
 	int statistique;
 	sf::Font* fontCarte;
+	sf::Texture* textureCarte;
 public:
 	string getNom() { return this->nom; }
 	void setNom(string nom) { this->nom = nom; }
+	sf::Texture* getTextureCarte() { return this->textureCarte; }
 	sf::Font* getFontCarte() { return this->fontCarte; }
 
 	carte(string nom);

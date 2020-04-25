@@ -13,6 +13,13 @@ carte::carte(string nom)
 	{
 		// erreur...
 	}
+	this->textureCarte = new sf::Texture;
+	if (!this->textureCarte->loadFromFile("texture/frame.png"))
+	{
+		// error...
+	}
+	textureCarte->setSmooth(false);
+	textureCarte->setRepeated(true);
 }
 
 void carte::afficher() 
@@ -37,6 +44,8 @@ void carte::sfCreationCarte(sf::RectangleShape &cardHead, sf::RectangleShape &ca
 {
 	cardHead.setFillColor(sf::Color(154, 142, 127));
 	cardBody.setFillColor(sf::Color(154, 142, 127));
+	//cardHead.setTexture(this->textureCarte);
+	//cardBody.setTexture(this->textureCarte);
 	cardHead.setOutlineThickness(3.f);
 	cardHead.setOutlineColor(sf::Color(104, 92, 77));
 	cardBody.setOutlineThickness(3.f);
