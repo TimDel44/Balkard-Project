@@ -13,6 +13,8 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdlib.h>
+#include <SFML/Graphics.hpp>
+#include <sstream>
 
 #include "carteElixir.h"
 #include "cartePotion.h"
@@ -26,7 +28,10 @@
 #include "Deck.h"
 #include "Titre.h"
 #include "graphics.h"
-
+#include "miseEnPage.h"
+#include <SFML/Audio.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 using namespace std;
 
@@ -37,8 +42,80 @@ using namespace std;
 */
 int main()
 {
-    
     srand(time(NULL));
+
+    Deck* deck = new Deck;
+    deck->melangerDeck();
+    string nom = "DHB";
+
+    personnage* perso1 = new personnage(nom);
+    joueur* player1 = new joueur(perso1);
+    personnage* perso2 = new personnage("Big \'E\'");
+    joueur* player2 = new joueur(perso2);
+    //-------------------------------------------------------------*/
+    //sf::RenderWindow window(sf::VideoMode(1000, 800), "Balkard-Project", sf::Style::Close | sf::Style::Titlebar);
+    miseEnPage* mep = new miseEnPage();
+
+
+    while (mep->getWindow()->isOpen())
+    {
+        sf::Music music;
+        if (!music.openFromFile("music/Heavy.wav"))
+            return -1; // error
+        music.setVolume(25.f);
+        music.play();
+
+        sf::Event evnt;
+        while (mep->getWindow()->pollEvent(evnt))
+        {
+            switch (evnt.type)
+            {
+            case sf::Event::Closed:
+                mep->getWindow()->close();
+                break;
+                case sf::Event::TextEntered:
+                    if (evnt.text.unicode < 128) {
+                        printf("%c", evnt.text.unicode);
+                    }
+            }
+        }
+        mep->getWindow()->clear();
+
+        while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
+        {
+            sf::Event evnt;
+            while (mep->getWindow()->pollEvent(evnt))
+            {
+                switch (evnt.type)
+                {
+                case sf::Event::Closed:
+                    mep->getWindow()->close();
+                    break;
+                    //case sf::Event::TextEntered:
+                    //    if (evnt.text.unicode < 128) {
+                    //        printf("%c", evnt.text.unicode);
+                    //    }
+                }
+            }
+            mep->getWindow()->clear();
+            mep->Titre();
+            mep->getWindow()->display();
+        }
+        // <- mettre une animation de disparition pour l'écran de titre
+        mep->getWindow()->clear();
+        //mep->affichagePlateau(player1, player2);
+        player1->joueurCombat(player2, deck, mep->getWindow());
+        //mep->getWindow()->clear();
+   //     deck->afficherDeck(mep->getWindow());
+        //mep->affichageNom(window, nom);
+        //window.draw(playercard);
+        //mep->getWindow()->display();
+        //player1->joueurCombat(player2, deck, mep->getWindow());
+        Sleep(5000);
+    }
+
+}
+/*    srand(time(NULL));
 
     cout << " 888888ba  oo                                                                                                 888888ba           dP dP                               dP" << endl;
     cout << " 88    `8b                                                                                                    88    `8b          88 88                               88" << endl;
@@ -60,16 +137,17 @@ int main()
 
     personnage* perso1 = new personnage(nom);
     joueur* player1 = new joueur(perso1);
-
+    
     //player1->choisirCarte();
     //player1->afficherMain();
+ 
 
    
     string nom2;
     cout << "\n\n\n\n\n\nEntrez le nom du joueur 2\n" << endl;
     cin >> nom2;
     system("cls");
-    personnage* perso2 = new personnage(nom2/*"Big \'E\'"*/);
+    personnage* perso2 = new personnage(nom2"Big \'E\'");
     joueur* player2 = new joueur(perso2);
 
     //string pause;
@@ -78,14 +156,4 @@ int main()
 
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+*/

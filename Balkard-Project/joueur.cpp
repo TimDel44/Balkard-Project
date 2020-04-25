@@ -16,6 +16,10 @@
 #include <ctime>
 #include "Deck.h"
 #include "carte.h"
+#include "texteCombat.h"
+//#include "miseEnPage.cpp"
+#include <SFML/Graphics.hpp>
+
 
 joueur::joueur(personnage* perso) {
 	this->actif = 1;
@@ -25,23 +29,30 @@ joueur::joueur(personnage* perso) {
 	this->possedeRituel = 0;
 	this->possedeSort = 0;
 	this->possedeItem = 0;
+
+	this->fontJoueur = new sf::Font;
+	if (!this->fontJoueur->loadFromFile("font/alagard.ttf"))
+	{
+		// erreur...
+	}
 }
 //AFFICHAGE JOUEUR
 void joueur::afficherJoueur() {
 	cout << this->perso->personnage::getNom() << endl;
 }
 //BOUCLE DE COMBAT
-void joueur::joueurCombat(joueur* cible, Deck* deck) {
+void joueur::joueurCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
 
-		this->perso->afficher();
+		affichagePlateau(cible, window);
+		//this->perso->afficher();
 
-		printf("\n					   ---------------------------------------------\n");
+		//printf("\n					   ---------------------------------------------\n");
 
-		cible->perso->afficher();
+		//cible->perso->afficher();
 
 
-		this->initierCombat(cible, deck);
+		this->initierCombat(cible, deck, window);
 
 		printf("\n\n\n");
 		system("cls");
@@ -49,16 +60,24 @@ void joueur::joueurCombat(joueur* cible, Deck* deck) {
 
 	printf("\n\n\n");
 
-	this->perso->afficher();
 
-	printf("\n					   ------------------------------------------------------\n");
+	affichagePlateau(cible, window);
 
-	cible->perso->afficher();
+	//this->perso->afficher();
+
+	//printf("\n					   ------------------------------------------------------\n");
+
+	//cible->perso->afficher();
 }
 //ATTAQUE
-void joueur::attaquer(joueur* cible) {
+void joueur::attaquer(joueur* cible, sf::RenderWindow* window) {
 	int jetAttaque = rand() % 7;
+	texteCombat* txt = new texteCombat;
+	window->clear();
+	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+	txt->preparationAtkTxt(this, window);
 	cout << "\n" << this->perso->getNom() << " se prepare a attaquer !\n" << endl;
+
 	if (this->possedeSort == 1) {
 
 		cout << "\n jouez une carte Sort" << endl;
@@ -67,68 +86,85 @@ void joueur::attaquer(joueur* cible) {
 	}
 	Sleep(2000);
 	cout << this->perso->getNom() << " a fait un jet d'attaque de " << jetAttaque << endl;
+	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+	txt->jetAtkTxt(this, window, jetAttaque);
 	Sleep(2000);
 	int jetCritique = rand() % 101;
 	if (jetAttaque != 0) {
 		if (jetCritique > 89) {
 			cout << "\n" << this->perso->getNom() << " a fait un fait un coup critique !" << endl;
+			affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+			txt->atkCritTxt(this, window);
 			Sleep(500);
-			cible->subir(this->perso->getAttaque() * 1.25 + jetAttaque * 1.25);
+			cible->subir(this->perso->getAttaque() * 1.25 + jetAttaque * 1.25, window);
 		}
 		else {
-			cible->subir(this->perso->getAttaque() + jetAttaque);
+			cible->subir(this->perso->getAttaque() + jetAttaque, window);
 		}
 	}
 	else
 	{
 		cout << this->perso->getNom() << " a rate son attaque !" << endl;
+		affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+		txt->atkFailTxt(this, window);
 	}
 }
 //DEGATS SUBIS
-void joueur::subir(int degats) {
+void joueur::subir(int degats, sf::RenderWindow* window) {
 	int jetEsquive = rand() % 7;
+	texteCombat* txt = new texteCombat;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'esquive de " << jetEsquive << endl;
+	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+	txt->jetEsquiveTxt(this, window, jetEsquive);
 	Sleep(2000);
 	if (jetEsquive + this->perso->getEsquive() < degats) {
 		this->perso->setVie((this->perso->getVie() - (degats - this->perso->getDefense()/4)));
 		printf("\n%s a subis %d points de degats !\n", this->perso->getNom().c_str(), (degats - this->perso->getDefense() / 4));
+		affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window); // chaud
 		Sleep(1000);
 		//cout << this->nom << " a subis " << degats << ' points de degats !' << endl;
 		//int vieActuelle = this->perso->getVie(); mista lova lova
 	}
 	else {
 		cout << this->perso->getNom() << " a esquive l'attaque !" << endl;
+		affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+		txt->esquiveTxt(this, window);
 		Sleep(1000);
 	}
 }
 //JET D'INITIATIVE
-int joueur::jetInitierCombat() {
+int joueur::jetInitierCombat(sf::RenderWindow* window) {
+	texteCombat* txt = new texteCombat;
 	int jetInitiative = rand() % 7;
 	cout << "\n" << this->perso->getNom() << " a fait un jet d'initiative de " << jetInitiative << endl;
+	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+	//txt->jetInitiaTxt(this, window, jetInitiative);
 	return jetInitiative + this->perso->getInitiative();
 }
 //CHOIX DU JOUEUR QUI ATTAQUE EN PREMIER
-void joueur::initierCombat(joueur* cible, Deck* deck) {
-	debutDeCombat(cible, deck);
+void joueur::initierCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
+	debutDeCombat(cible, deck, window);
 	system("cls");
 	this->perso->afficher();
 
 	printf("\n					   ---------------------------------------------\n");
 
 	cible->perso->afficher();
-	if (this->jetInitierCombat() > cible->jetInitierCombat()) {
-		this->attaquer(cible);
-		cible->attaquer(this);
-		finDeCombat(cible, deck);
+	if (this->jetInitierCombat(window) > cible->jetInitierCombat(window)) {
+		this->attaquer(cible, window);
+		window->clear();
+		cible->attaquer(this, window);
+		window->clear();
+		finDeCombat(cible, deck, window);
 	}
 	else {
-		cible->attaquer(this);
-		this->attaquer(cible);
-		finDeCombat(cible, deck);
+		cible->attaquer(this, window);
+		this->attaquer(cible, window);
+		finDeCombat(cible, deck, window);
 	}
 }
 //FIN DU COMBAT (AFFICHAGE DES JOUEUR ET CARTE RITUEL(pas mis en place))
-void joueur::finDeCombat(joueur* cible, Deck* deck) {
+void joueur::finDeCombat(joueur* cible, Deck* deck,  sf::RenderWindow* window) {
 	cout << "\n End Phase" << endl;
 	//Affichage de la main à la fin du tour
 	/*
@@ -152,10 +188,13 @@ void joueur::finDeCombat(joueur* cible, Deck* deck) {
 	printf("\n					   ---------------------------------------------\n");
 
 	cible->perso->afficher();
-	Sleep(5000);
+	window->clear();
+	//affichagePlateau(cible, window);
+
+	//Sleep(2000);
 }
 //DEBUT DU COMBAT (PIOCHER ET UTILISER CARTE)
-void joueur::debutDeCombat(joueur* cible, Deck* deck) {
+void joueur::debutDeCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
 	cout << "Starting Phase" << endl;
 	this->perso->setPA(3);
 	cible->perso->setPA(3);
@@ -163,34 +202,48 @@ void joueur::debutDeCombat(joueur* cible, Deck* deck) {
 	cible->joueurPiocher(deck);
 	cout << "Joueur 1, voici vos cartes :" << endl;
 	//for(int i = 0; i < this->main.size(); i++) {	this->main[i]->afficher();   }
-	this->joueurJouerCarte(cible, deck);
+	this->joueurJouerCarte(cible, deck, window);
+	window->clear();
 	cout << "Joueur 2, voici vos cartes :" << endl;
 	//for (int i = 0; i < cible->main.size(); i++) { cible->main[i]->afficher(); }
-	cible->joueurJouerCarte(cible, deck);
+	cible->joueurJouerCarte(cible, deck, window);
 		if (this->possedeItem == 1) {
 
 			cout << "\n jouez une carte Item" << endl;
 			//>> cin
 
 		}
+		window->clear();
+		window->display();
 }
 //CHOIX DE LA CARTE A JOUER
-void joueur::joueurJouerCarte(joueur* cible, Deck* deck) {
+void joueur::joueurJouerCarte(joueur* cible, Deck* deck, sf::RenderWindow* window) {
 	int choix;
 		if (this->main.size() != 0) {
-			while (this->perso->getPA() != 0) {
-				for (int i = 0; i < this->main.size(); i++) { this->main[i]->afficher(); }
-				cout << "choisissez une carte a jouer" << endl;
-				cin >> choix;
-				while (choix > main.size() || choix == 0) {
-					cout << "choisissez un nombre valide" << endl;
+				while (this->perso->getPA() != 0) {
+					window->clear();
+					if (this->main.size() > 5) {
+						this->affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2 - 300.f), window);
+						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150); }
+					}
+					else {
+						this->affichageJoueur(this, window->getSize().x / 2, window->getSize().y / 2 - 300.f, window);
+						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300); }
+					}
+					window->display();
+					cout << "choisissez une carte a jouer" << endl;
 					cin >> choix;
+					//choix = fChoix();
+					
+					while (choix > main.size() || choix == 0) {
+						cout << "choisissez un nombre valide" << endl;
+						cin >> choix;
+					}
+					joueurActiverCarte(cible, deck, choix);
+					this->main.erase(main.begin() + choix - 1);
+					this->perso->setPA(this->perso->getPA() - 1);
+					cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
 				}
-				joueurActiverCarte(cible, deck, choix);
-				this->main.erase(main.begin() + choix - 1);
-				this->perso->setPA(this->perso->getPA() - 1);
-				cout << "il vous reste : " << this->perso->getPA() << " PA" << endl;
-			}
 		}
 	this->main.clear();
 }
@@ -287,3 +340,217 @@ void joueur::afficherMain() {
 }
 */
 
+void joueur::affichagePlateau(joueur* player2, sf::RenderWindow* window)
+{
+	sf::RectangleShape separateur(sf::Vector2f(window->getSize().x / 2, 5.f));
+	separateur.setOrigin(window->getSize().x / 4, 2.5f);
+	separateur.setPosition(window->getSize().x / 2, window->getSize().y / 2);
+	separateur.setFillColor(sf::Color(104, 92, 77));
+
+	window->draw(separateur);
+
+	affichageJoueur(this, window->getSize().x / 2, separateur.getPosition().y - 300.f, window);
+	affichageJoueur(player2, window->getSize().x / 2, separateur.getPosition().y + 100.f, window);
+
+	window->display();
+	Sleep(3000);
+}
+
+
+
+
+void joueur::affichageJoueur(joueur* player, int xpos, int ypos, sf::RenderWindow* window)
+{
+	sf::RectangleShape playercardHead(sf::Vector2f(250.0f, 50.0f));
+	sf::RectangleShape playercardBody(sf::Vector2f(250.0f, 200.0f));
+
+	playercardHead.setFillColor(sf::Color(154, 142, 127));
+	playercardBody.setFillColor(sf::Color(154, 142, 127));
+	playercardHead.setOutlineThickness(3.f);
+	playercardHead.setOutlineColor(sf::Color(104, 92, 77));
+	playercardBody.setOutlineThickness(3.f);
+	playercardBody.setOutlineColor(sf::Color(104, 92, 77));
+
+	playercardHead.setOrigin(125.f, 12.5f);
+	playercardBody.setOrigin(125.f, 100.f);
+
+	playercardHead.setPosition(xpos, ypos);
+	playercardBody.setPosition(playercardHead.getPosition().x, playercardHead.getPosition().y + 142.f);
+
+
+	sf::Text nom;
+	sf::Text vie;
+	sf::Text preVie;
+	sf::Text attaque;
+	sf::Text preAtk;
+	sf::Text defense;
+	sf::Text preDef;
+	sf::Text esquive;
+	sf::Text preEsq;
+	sf::Text initiative;
+	sf::Text preInitia;
+	sf::Text perception;
+	sf::Text prePerc;
+	sf::Text pa;
+	sf::Text prePa;
+
+
+	nom.setString(player->getPerso()->getNom());
+
+	syntaxeCarte(nom);
+	nom.setCharacterSize(25);
+	setOrigine(nom);
+
+
+	nom.setPosition(playercardHead.getPosition().x, playercardHead.getPosition().y + 12.5f);
+
+	//
+	preVie.setString("vie :");
+	vie.setString(std::to_string(player->getPerso()->getVie()));
+	preAtk.setString("attaque :");
+	attaque.setString(std::to_string(player->getPerso()->getAttaque()));
+	preDef.setString("defense :");
+	defense.setString(std::to_string(player->getPerso()->getDefense()));
+	preEsq.setString("esquive :");
+	esquive.setString(std::to_string(player->getPerso()->getEsquive()));
+	preInitia.setString("initiative :");
+	initiative.setString(std::to_string(player->getPerso()->getInitiative()));
+	prePerc.setString("perception :");
+	perception.setString(std::to_string(player->getPerso()->getPerception()));
+	prePa.setString("PA :");
+	pa.setString(std::to_string(player->getPerso()->getPA()));
+
+	syntaxeCarte(preVie);
+	syntaxeCarte(vie);
+	syntaxeCarte(preAtk);
+	syntaxeCarte(attaque);
+	syntaxeCarte(preDef);
+	syntaxeCarte(defense);
+	syntaxeCarte(preEsq);
+	syntaxeCarte(esquive);
+	syntaxeCarte(preInitia);
+	syntaxeCarte(initiative);
+	syntaxeCarte(prePerc);
+	syntaxeCarte(perception);
+	syntaxeCarte(prePa);
+	syntaxeCarte(pa);
+
+	setOrigine(preVie);
+	setOrigine(vie);
+	setOrigine(preAtk);
+	setOrigine(attaque);
+	setOrigine(preDef);
+	setOrigine(defense);
+	setOrigine(preEsq);
+	setOrigine(esquive);
+	setOrigine(preInitia);
+	setOrigine(initiative);
+	setOrigine(prePerc);
+	setOrigine(perception);
+	setOrigine(prePa);
+	setOrigine(pa);
+
+
+	preVie.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y - 80.f);
+	vie.setPosition(preVie.getPosition().x + 40.f, preVie.getPosition().y);
+
+	preAtk.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y - 55.f);
+	attaque.setPosition(preAtk.getPosition().x + 50.f, preAtk.getPosition().y);
+
+	preDef.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y - 30.f);
+	defense.setPosition(preDef.getPosition().x + 50.f, preDef.getPosition().y);
+
+	preEsq.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y - 5.f);
+	esquive.setPosition(preEsq.getPosition().x + 50.f, preEsq.getPosition().y);
+
+	preInitia.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y + 20.f);
+	initiative.setPosition(preInitia.getPosition().x + 60.f, preInitia.getPosition().y);
+
+	prePerc.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y + 45.f);
+	perception.setPosition(prePerc.getPosition().x + 65.f, prePerc.getPosition().y);
+
+	prePa.setPosition(playercardBody.getPosition().x, playercardBody.getPosition().y + 70.f);
+	pa.setPosition(prePa.getPosition().x + 40.f, prePa.getPosition().y);
+
+	window->draw(playercardHead);
+	window->draw(playercardBody);
+
+	window->draw(nom);
+	window->draw(preVie);
+	window->draw(vie);
+	window->draw(preAtk);
+	window->draw(attaque);
+	window->draw(preDef);
+	window->draw(defense);
+	window->draw(preEsq);
+	window->draw(esquive);
+	window->draw(preInitia);
+	window->draw(initiative);
+	window->draw(prePerc);
+	window->draw(perception);
+	window->draw(prePa);
+	window->draw(pa);
+
+
+}
+
+void joueur::syntaxeCarte(sf::Text& text)
+{
+	text.setFont(*this->fontJoueur);
+	text.setFillColor(sf::Color::Black);
+	text.setCharacterSize(20);
+}
+
+// Permet de set l'origine du texte à son milieu
+void joueur::setOrigine(sf::Text& text)
+{
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width / 2.0f,
+		textRect.top + textRect.height / 2.0f);
+}
+
+
+
+/*int joueur::fChoix() {
+	int choix;
+	while (!sf::Keyboard::isKeyPressed) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		{
+			choix = 1;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		{
+			choix = 2;
+
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+		{
+			choix = 3;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+		{
+			choix = 4;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+		{
+			choix = 5;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
+		{
+			choix = 6;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
+		{
+			choix = 7;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
+		{
+			choix = 8;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+		{
+			choix = 9;
+		}
+	}
+	return choix;
+}*/

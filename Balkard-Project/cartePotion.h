@@ -2,6 +2,7 @@
 #include <iostream>
 #include "carte.h"
 #include <string>
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class cartePotion : public carte
@@ -25,6 +26,8 @@ public:
     void setAlteration() { this->alteration = alteration; }
     void setStatistique() { this->statistique = statistique; }
     virtual void afficher();
-
+    virtual void sfafficher(sf::RenderWindow*, int/*, int*/);
+    //virtual void setOrigine(sf::Text text);
+    //virtual void syntaxeCarte(sf::Text text);
 };
 

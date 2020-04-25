@@ -17,7 +17,7 @@
 Deck::Deck()
 {
     string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
-    string stat[5] = { "Vie", "Attaque", "Defense", "Esquive","Percept\." };
+    string stat[5] = { "Vie", "Attaque", "Defense", "Esquive"/*,"Percept\."*/ };
     string niveau[3] = { "I", "II", "III" };
     string materiauArmure[3] = { "Cuir", "Fer", "Or" };
     string materiauArme[3] = { "Bois","Fer","Or" };
@@ -47,13 +47,13 @@ Deck::Deck()
             }
         }
     }
-    //CARTE ARGENT
-    /*
-    for (i = 0; i < 14; i++) {
-        valeur = rand() % 90 + 10;
-        cartes.push_back(new carteArgent(objet[2], valeur));
-    }
-    */
+//    //CARTE ARGENT
+//    /*
+//    for (i = 0; i < 14; i++) {
+//        valeur = rand() % 90 + 10;
+//        cartes.push_back(new carteArgent(objet[2], valeur));
+//    }
+//    */
     //CARTE ARMURE et BOTTE
     for (a = 0; a < 3; a++) {
         b = (3 - a);
@@ -70,14 +70,14 @@ Deck::Deck()
         }
     }
     //CARTE TALISMAN
-    /*
-    for (a = 0; a < 3; a++) {
-        b = (3 - a);
-        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
-        }
-    }
-    */
+    
+//    for (a = 0; a < 3; a++) {
+//        b = (3 - a);
+//        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
+//            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
+//        }
+//    }
+    
     //delete de carte, pas utile
     /*
     for (i = 0; i < cartes.size(); i++) {
@@ -90,10 +90,10 @@ void Deck::melangerDeck() {
     random_shuffle(this->cartes.begin(), this->cartes.end());
 }
 
-void Deck::afficherDeck() {
+void Deck::afficherDeck(sf::RenderWindow* window) {
     int i;
     for (i = 0; i < this->cartes.size(); i++) {
-        cartes[i]->afficher();
+        cartes[i]->sfafficher(window, i*100);
     }
     cartes.size();
     cout << endl;

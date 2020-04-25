@@ -13,6 +13,8 @@
 #include <ctime>
 #include "personnage.h"
 #include "Deck.h"
+//#include "miseEnPage.h"
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class joueur
@@ -27,6 +29,7 @@ private:
 	int possedeRituel;
 	int possedeItem;
 	vector<carte*> main;
+	sf::Font* fontJoueur;
   
 public:
 
@@ -37,6 +40,8 @@ public:
 	int getPossedeRituel() { return this->possedeRituel; }
 	int getPossedeItem() { return this->possedeSort; }
 	vector<carte*> getMain() { return this->main; }
+	personnage* getPerso() { return this->perso;  }
+	sf::Font* getFontJoueur() { return this->fontJoueur; }
 
 	void setArgent() { this->argent = argent; }
 	void setActif() { this->actif = actif; }
@@ -48,21 +53,25 @@ public:
 
 	joueur(personnage* perso);
 	void afficherJoueur();
-	void joueurCombat(joueur* cible, Deck*);
-	void attaquer(joueur*);
-	void subir(int degats);
-	int jetInitierCombat();
-	void initierCombat(joueur*, Deck*);
+	void joueurCombat(joueur* cible, Deck*, sf::RenderWindow*);
+	void attaquer(joueur*, sf::RenderWindow*);
+	void subir(int degats, sf::RenderWindow*);
+	int jetInitierCombat(sf::RenderWindow*);
+	void initierCombat(joueur*, Deck*, sf::RenderWindow*);
 
 	void clear();
-	void finDeCombat(joueur*, Deck*);
-	void debutDeCombat(joueur*, Deck*);
+	void finDeCombat(joueur*, Deck*, sf::RenderWindow*);
+	void debutDeCombat(joueur*, Deck*, sf::RenderWindow*);
 
 	void joueurPiocher(Deck* deck);
-	void joueurJouerCarte(joueur*, Deck*);
+	void joueurJouerCarte(joueur*, Deck*, sf::RenderWindow*);
 	void joueurActiverCarte(joueur*, Deck*, int);
 	//Méthode non retenu de choix de carte
 	//void choisirCarte();
 	//void afficherMain();
-
+	void syntaxeCarte(sf::Text& text);
+	void setOrigine(sf::Text& text);
+	void affichageJoueur(joueur* player, int xpos, int ypos, sf::RenderWindow*);
+	void affichagePlateau(joueur* player2, sf::RenderWindow*);
+	//int fChoix();
 };
