@@ -47,13 +47,13 @@ Deck::Deck()
             }
         }
     }
-    //CARTE ARGENT
-    /*
-    for (i = 0; i < 14; i++) {
-        valeur = rand() % 90 + 10;
-        cartes.push_back(new carteArgent(objet[2], valeur));
-    }
-    */
+//    //CARTE ARGENT
+//    /*
+//    for (i = 0; i < 14; i++) {
+//        valeur = rand() % 90 + 10;
+//        cartes.push_back(new carteArgent(objet[2], valeur));
+//    }
+//    */
     //CARTE ARMURE et BOTTE
     for (a = 0; a < 3; a++) {
         b = (3 - a);
@@ -90,10 +90,10 @@ void Deck::melangerDeck() {
     random_shuffle(this->cartes.begin(), this->cartes.end());
 }
 
-void Deck::afficherDeck() {
+void Deck::afficherDeck(sf::RenderWindow* window) {
     int i;
     for (i = 0; i < this->cartes.size(); i++) {
-        cartes[i]->afficher();
+        cartes[i]->sfafficher(window, i*100);
     }
     cartes.size();
     cout << endl;

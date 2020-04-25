@@ -17,6 +17,8 @@
     <ClCompile Include="carteArmure.cpp" />
     <ClCompile Include="carteTalisman.cpp" />
     <ClCompile Include="carteBotte.cpp" />
+    <ClCompile Include="miseEnPage.cpp" />
+    <ClCompile Include="texteCombat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
@@ -34,5 +36,7 @@
     <ClInclude Include="carteArmure.h" />
     <ClInclude Include="carteTalisman.h" />
     <ClInclude Include="carteBotte.h" />
+    <ClInclude Include="miseEnPage.h" />
+    <ClInclude Include="texteCombat.h" />
   </ItemGroup>
 </Project>

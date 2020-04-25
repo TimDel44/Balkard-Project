@@ -20,7 +20,7 @@ public:
 
 
 	void melangerDeck();
-	void afficherDeck();
+	void afficherDeck(sf::RenderWindow*);
 	//void pioche();
 	//void afficherPioche();
 	void checkTaille();
