@@ -17,7 +17,7 @@
 Deck::Deck()
 {
     string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
-    string stat[5] = { "Vie", "Attaque", "Defense", "Esquive","Percept\." };
+    string stat[5] = { "Vie", "Attaque", "Defense", "Esquive"/*,"Percept\."*/ };
     string niveau[3] = { "I", "II", "III" };
     string materiauArmure[3] = { "Cuir", "Fer", "Or" };
     string materiauArme[3] = { "Bois","Fer","Or" };
@@ -70,14 +70,14 @@ Deck::Deck()
         }
     }
     //CARTE TALISMAN
-    /*
-    for (a = 0; a < 3; a++) {
-        b = (3 - a);
-        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
-            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
-        }
-    }
-    */
+    
+//    for (a = 0; a < 3; a++) {
+//        b = (3 - a);
+//        for (nbdecarte = 0; nbdecarte < b; nbdecarte++) {
+//            cartes.push_back(new carteTalisman(objet[6], "PA", niveau[a], a+1, 6));
+//        }
+//    }
+    
     //delete de carte, pas utile
     /*
     for (i = 0; i < cartes.size(); i++) {

@@ -29,6 +29,9 @@
 #include "Titre.h"
 #include "graphics.h"
 #include "miseEnPage.h"
+#include <SFML/Audio.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 using namespace std;
 
@@ -53,8 +56,15 @@ int main()
     //sf::RenderWindow window(sf::VideoMode(1000, 800), "Balkard-Project", sf::Style::Close | sf::Style::Titlebar);
     miseEnPage* mep = new miseEnPage();
 
+
     while (mep->getWindow()->isOpen())
     {
+        sf::Music music;
+        if (!music.openFromFile("music/Heavy.wav"))
+            return -1; // error
+        music.setVolume(25.f);
+        music.play();
+
         sf::Event evnt;
         while (mep->getWindow()->pollEvent(evnt))
         {

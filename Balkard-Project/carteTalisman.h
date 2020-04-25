@@ -23,5 +23,5 @@ public:
     void setAlteration(int a) { this->alteration = a; }
     void setStatistique(int s) { this->statistique = s; }
     virtual void afficher();
-
+    virtual void sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/);
 };
