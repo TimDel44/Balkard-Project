@@ -159,3 +159,18 @@ void texteCombat::jetInitiaTxt(joueur* player, sf::RenderWindow* window, int jet
 	window->draw(jet);
 	window->display();
 }
+void texteCombat::shopTxt(joueur* player, sf::RenderWindow* window) {
+	sf::Text playerName;
+	sf::Text flavorText;
+	playerName.setString(player->getPerso()->getNom());
+	flavorText.setString(", Bienvenue dans mon magasin");
+	syntaxeCartetxt(playerName);
+	syntaxeCartetxt(flavorText);
+	setOriginetxt(playerName);
+	setOriginetxt(flavorText);
+	flavorText.setPosition(window->getSize().x / 5, 100.f);
+	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
+	window->draw(flavorText);
+	window->draw(playerName);
+	window->display();
+}

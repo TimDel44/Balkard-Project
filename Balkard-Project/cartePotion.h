@@ -12,9 +12,10 @@ private:
     string niveau;
     int alteration;
     int statistique;
+    int cost;
 public:
    
-    cartePotion(string nom, string nomStat, string niveau, int a, int s);
+    cartePotion(string nom, string nomStat, string niveau, int a, int s, int c);
     string getNomStat() { return this->nomStat; }
     string setNomStat(std::string nomStat) { this->nomStat = nomStat; }
 
@@ -23,8 +24,10 @@ public:
 
     virtual int getAlteration() { return this->alteration; }
     virtual int getStatistique() { return this->statistique; }
+    virtual int getCost() { return this->cost; }
     void setAlteration() { this->alteration = alteration; }
     void setStatistique() { this->statistique = statistique; }
+    void setCost() { this->cost = cost; }
     virtual void afficher();
     virtual void sfafficher(sf::RenderWindow*, int/*, int*/);
     //virtual void setOrigine(sf::Text text);

@@ -10,6 +10,7 @@ protected:
 	string nom;
 	int alteration;
 	int statistique;
+	int cost;
 	sf::Font* fontCarte;
 	sf::Texture* textureCarte;
 public:
@@ -24,6 +25,7 @@ public:
 	virtual void sfafficher(sf::RenderWindow* window, int);
 	virtual int getAlteration() { return this->alteration; }
 	virtual int getStatistique() { return this->statistique; }
+	virtual int getCost() { return this->cost; }
 	virtual void sfCreationCarte(sf::RectangleShape& cardHead, sf::RectangleShape& cardBody);
 	virtual void syntaxeCarte(sf::Text& text);
 	virtual void setOrigine(sf::Text& text);

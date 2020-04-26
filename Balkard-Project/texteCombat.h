@@ -19,6 +19,7 @@ public :
 	void jetEsquiveTxt(joueur*, sf::RenderWindow*, int);
 	void esquiveTxt(joueur*, sf::RenderWindow*);
 	void jetInitiaTxt(joueur*, sf::RenderWindow*, int);
+	void shopTxt(joueur*, sf::RenderWindow*);
 
 	void setOriginetxtBRESOM(sf::Text& text);
 

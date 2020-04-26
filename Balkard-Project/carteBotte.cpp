@@ -15,7 +15,7 @@
 
 using namespace std;
 
-carteBotte::carteBotte(string nom, string nomStat, string niveau, int a, int s) :carte(nom), nomStat(nomStat), niveau(niveau), alteration(a), statistique(s) {}
+carteBotte::carteBotte(string nom, string nomStat, string niveau, int a, int s, int c) :carte(nom), nomStat(nomStat), niveau(niveau), alteration(a), statistique(s), cost(c) {}
 
 void carteBotte::afficher()
 {

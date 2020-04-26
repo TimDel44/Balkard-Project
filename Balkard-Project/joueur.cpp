@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "graphics.h"
 #include <ctime>
-#include "Deck.h"
+#include "deckShop.h"
 #include "carte.h"
 #include "texteCombat.h"
 //#include "miseEnPage.cpp"
@@ -25,7 +25,7 @@ joueur::joueur(personnage* perso) {
 	this->actif = 1;
 	this->persoVivant = 1;
 	this->perso = perso;
-	this->argent = 0;
+	this->argent = 20;
 	this->possedeRituel = 0;
 	this->possedeSort = 0;
 	this->possedeItem = 0;
@@ -41,7 +41,7 @@ void joueur::afficherJoueur() {
 	cout << this->perso->personnage::getNom() << endl;
 }
 //BOUCLE DE COMBAT
-void joueur::joueurCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
+void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::RenderWindow* window) {
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
 
 		affichagePlateau(cible, window);
@@ -58,10 +58,25 @@ void joueur::joueurCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
 		system("cls");
 	}
 
+
 	printf("\n\n\n");
 
 
 	affichagePlateau(cible, window);
+
+	window->clear();
+	if (this->perso->personnage::getVie() <= 0 && cible->perso->personnage::getVie() <= 0) {
+		cout << "vous vous etes entretuez" << endl;
+		this->reset(cible);
+	}else if (this->perso->personnage::getVie() <= 0) {
+		cout << "vous avez perdu" << endl;
+		this->reset(cible);
+	}else if(cible->perso->personnage::getVie() <= 0){
+		this->reset(cible);
+		shopping(cible, deckshop, window);
+	}
+	
+
 
 	//this->perso->afficher();
 
@@ -356,9 +371,6 @@ void joueur::affichagePlateau(joueur* player2, sf::RenderWindow* window)
 	Sleep(3000);
 }
 
-
-
-
 void joueur::affichageJoueur(joueur* player, int xpos, int ypos, sf::RenderWindow* window)
 {
 	sf::RectangleShape playercardHead(sf::Vector2f(250.0f, 50.0f));
@@ -554,3 +566,119 @@ void joueur::setOrigine(sf::Text& text)
 	}
 	return choix;
 }*/
+
+void joueur::shopping(joueur* cible, deckShop* deckshop, sf::RenderWindow* window) {
+	deckshop->checkTaille();
+	//texteCombat* txt = new texteCombat;
+	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
+	//txt->shopTxt(this, window);
+	this->joueurShop(deckshop);
+	this->joueurAcheterCarte(cible, deckshop, window);
+	//window->clear();
+	window->display();
+}
+//CHOIX DE LA CARTE A JOUER
+void joueur::joueurAcheterCarte(joueur* cible, deckShop* deckshop, sf::RenderWindow* window) {
+	int choix;
+	if (this->main.size() != 0) {
+		cout << "Bienvenue dans mon magasin" << endl;
+
+		while (this->getArgent() > 9 && this->main.size() > 0) {
+			window->clear();
+			cout << "Vous avez " << this->getArgent() << " pieces" << endl;
+
+			if (this->main.size() > 5) {
+				this->affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2 - 300.f), window);
+				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150); }
+			}
+			else {
+				this->affichageJoueur(this, window->getSize().x / 2, window->getSize().y / 2 - 300.f, window);
+				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300); }
+			}
+			window->display();
+			cout << "choisissez une carte a acheter ou passez votre chemin" << endl;
+			cin >> choix;
+			if (choix == 0) {
+				cout << "vous decidez de passer votre chemin" << endl;
+			}
+			else {
+				while (choix > main.size()) {
+					cout << "choisissez un nombre valide" << endl;
+					cin >> choix;
+				}
+				joueurActiverCarteShop(cible, deckshop, choix);
+				this->main.erase(main.begin() + choix - 1);
+				cout << "il vous reste : " << this->getArgent() << " BalkCoin" << endl;
+			}
+			if (this->getArgent() < 10 ) {
+				cout << "Vous n'avez plus d'argent, sortez d'ici !" << endl;
+			}
+			else if (this->main.size() < 1) {
+				cout << "Je n'ai plus rien, revenez plus tard" << endl;
+			}
+		}
+	}
+	this->main.clear();
+
+}
+
+//MISE EN PLACE DES EFFETS DES POTIONS
+void joueur::joueurActiverCarteShop(joueur* cible, deckShop* deckshop, int choix) {
+	if (this->main[choix - 1]->getStatistique() == 0) {
+		this->perso->setVie(this->perso->getVie() + this->main[choix - 1]->getAlteration() * 10);
+		cout << "vous vous etes soigne de " << this->main[choix - 1]->getAlteration() * 10 << " Points de vie !" << endl;
+	}
+	else if (this->main[choix - 1]->getStatistique() == 1) {
+		this->perso->setAttaque(this->perso->getAttaque() + this->main[choix - 1]->getAlteration() * 5);
+		cout << "vous boostez votre attaque de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+	}
+	else if (this->main[choix - 1]->getStatistique() == 2) {
+		this->perso->setDefense(this->perso->getDefense() + this->main[choix - 1]->getAlteration() * 5);
+		cout << "vous augmentez votre defense de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+	}
+	else if (this->main[choix - 1]->getStatistique() == 3) {
+		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 5);
+		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive !" << endl;
+	}
+	else if (this->main[choix - 1]->getStatistique() == 4) {
+		this->perso->setPerception(this->perso->getPerception() + this->main[choix - 1]->getAlteration() - 2);
+		cout << "vous pouvez piocher " << this->perso->getPerception() << " cartes !" << endl;
+	}
+	else if (this->main[choix - 1]->getStatistique() == 6) {
+		this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
+		cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;
+	}
+	this->setArgent(this->getArgent() - this->main[choix - 1]->getCost());
+
+}
+
+//PIOCHE DES CARTES ET SUPPRESSION DE LA CARTE DANS LE DECK
+void joueur::joueurShop(deckShop* deckshop) {
+
+	for (int i = 0; i < 4; i++) {
+		if (deckshop->getCarte().size() > 4) {
+			this->main.push_back(deckshop->getCarte()[i]);
+			deckshop->suppCarte();
+		}
+		else {
+			cout << "Il n\'y a plus de cartes !" << endl;
+		}
+	}
+}
+
+void joueur::reset(joueur* cible) {
+	this->perso->setVie(100);
+	this->perso->setAttaque(5);
+	this->perso->setDefense(5);
+	this->perso->setPerception(4);
+	this->perso->setInitiative(3);
+	this->perso->setEsquive(2);
+	this->perso->setPA(3);
+	cible->perso->setVie(100);
+	cible->perso->setAttaque(5);
+	cible->perso->setDefense(5);
+	cible->perso->setPerception(4);
+	cible->perso->setInitiative(3);
+	cible->perso->setEsquive(2);
+	cible->perso->setPA(3);
+}
