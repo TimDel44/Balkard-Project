@@ -79,7 +79,7 @@ void miseEnPage::Titre() {
     titre3.setCharacterSize(24);
     //titre2.setStyle(sf::Text::Bold);
     titre3.setFillColor(sf::Color::White);
-    titre3.setString("Projet realise par Timothee Delamare");
+    titre3.setString("Projet realise par Timothee Delamare et Theophile Farvacque");
     sf::FloatRect textRect3 = titre3.getLocalBounds();
     titre3.setOrigin(textRect3.left + textRect3.width / 2.0f,
         textRect3.top + textRect3.height / 2.0f);
