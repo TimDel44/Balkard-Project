@@ -44,7 +44,7 @@ deckShop::deckShop()
     cartes.push_back(new carteArme(objet[5], "Damocles", l, 5, 1, c));
     cartes.push_back(new carteArme(objet[5], "Excalibur", l, 6, 1, c));
     cartes.push_back(new carteArme(objet[5], "Le tesson du Capitaine", l, 2, 1, c));
-    cartes.push_back(new carteArme(objet[5], "CURSED Magnum", l, -2, 1, c));
+    cartes.push_back(new carteArme(objet[5], "CURSED Magnum", l, -2, 0, c));
 }
 void deckShop::melangerDeck() {
     random_shuffle(this->cartes.begin(), this->cartes.end());
