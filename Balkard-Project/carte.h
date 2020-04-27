@@ -22,7 +22,7 @@ public:
 	carte(string nom);
 
 	virtual void afficher();
-	virtual void sfafficher(sf::RenderWindow* window, int);
+	virtual void sfafficher(sf::RenderWindow* window, int,int);
 	virtual int getAlteration() { return this->alteration; }
 	virtual int getStatistique() { return this->statistique; }
 	virtual int getCost() { return this->cost; }

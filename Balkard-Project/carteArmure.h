@@ -26,7 +26,7 @@ public:
     void setStatistique(int s) { this->statistique = s; }
     void setCost(int c) { this->cost = c; }
     virtual void afficher();
-    virtual void sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/);
+    virtual void sfafficher(sf::RenderWindow* window, int xpos, int deck/*, int ypos*/);
 
 };
 

@@ -35,7 +35,7 @@ void carteArme::afficher()
 	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 }
 
-void carteArme::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
+void carteArme::sfafficher(sf::RenderWindow* window, int xpos, int deck/*, int ypos*/)
 {
 	sf::RectangleShape cardHead(sf::Vector2f(250.0f, 50.0f));
 	sf::RectangleShape cardBody(sf::Vector2f(250.0f, 200.0f));
@@ -85,4 +85,19 @@ void carteArme::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	window->draw(stat);
 	window->draw(preNiveau);
 	window->draw(niveau);
+
+	if (deck == 1) {
+		sf::Text preCost;
+		sf::Text cost;
+		cost.setString(std::to_string(this->getCost()));
+		preCost.setString("prix :");
+		carte::syntaxeCarte(preCost);
+		carte::setOrigine(preCost);
+		carte::syntaxeCarte(cost);
+		carte::setOrigine(cost);
+		preCost.setPosition(cardBody.getPosition().x, cardBody.getPosition().y + 45.f);
+		cost.setPosition(preCost.getPosition().x + 60.f, preCost.getPosition().y);
+		window->draw(preCost);
+		window->draw(cost);
+	}
 }

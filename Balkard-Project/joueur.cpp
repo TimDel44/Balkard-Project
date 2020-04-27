@@ -72,8 +72,8 @@ void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::Ren
 	}else if (this->perso->personnage::getVie() <= 0) {
 		cout << "vous avez perdu" << endl;
 		this->reset(cible);
-	//}else if(cible->perso->personnage::getVie() <= 0){
-	//	this->reset(cible);
+	}else if(cible->perso->personnage::getVie() <= 0){
+		this->reset(cible);
 	//	shopping(cible, deckshop, window);
 	}
 	
@@ -245,11 +245,11 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck, sf::RenderWindow* windo
 					window->clear();
 					if (this->main.size() > 5) {
 						this->affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2 - 300.f), window);
-						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150); }
+						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150,0); }
 					}
 					else {
 						this->affichageJoueur(this, window->getSize().x / 2, window->getSize().y / 2 - 300.f, window);
-						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300); }
+						for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300,0); }
 					}
 					window->display();
 					cout << "choisissez une carte a jouer" << endl;
@@ -639,23 +639,24 @@ void joueur::joueurAcheterCarte(joueur* cible, deckShop* deckshop, sf::RenderWin
 	if (this->main.size() != 0) {
 		cout << "Bienvenue dans mon magasin" << endl;
 
-		while (this->getArgent() > 9 && this->main.size() > 0) {
+		while (this->getArgent() > 39 && this->main.size() > 0) {
 			window->clear();
 			cout << "Vous avez " << this->getArgent() << " pieces" << endl;
 
 			if (this->main.size() > 5) {
 				this->affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2 - 300.f), window);
-				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150); }
+				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 150, 1); }
 			}
 			else {
 				this->affichageJoueur(this, window->getSize().x / 2, window->getSize().y / 2 - 300.f, window);
-				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300); }
+				for (int i = 0; i < this->main.size(); i++) { this->main[i]->sfafficher(window, i * 300,1); }
 			}
 			window->display();
 			cout << "choisissez une carte a acheter ou passez votre chemin" << endl;
 			cin >> choix;
 			if (choix == 0) {
 				cout << "vous decidez de passer votre chemin" << endl;
+				this->main.clear();
 			}
 			else {
 				while (choix > main.size()) {
@@ -666,7 +667,7 @@ void joueur::joueurAcheterCarte(joueur* cible, deckShop* deckshop, sf::RenderWin
 				this->main.erase(main.begin() + choix - 1);
 				cout << "il vous reste : " << this->getArgent() << " BalkCoin" << endl;
 			}
-			if (this->getArgent() < 10 ) {
+			if (this->getArgent() < 1 ) {
 				cout << "Vous n'avez plus d'argent, sortez d'ici !" << endl;
 			}
 			else if (this->main.size() < 1) {

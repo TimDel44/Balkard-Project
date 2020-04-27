@@ -29,7 +29,7 @@ public:
     void setStatistique() { this->statistique = statistique; }
     void setCost() { this->cost = cost; }
     virtual void afficher();
-    virtual void sfafficher(sf::RenderWindow*, int/*, int*/);
+    virtual void sfafficher(sf::RenderWindow*, int, int/*, int*/);
     //virtual void setOrigine(sf::Text text);
     //virtual void syntaxeCarte(sf::Text text);
 };

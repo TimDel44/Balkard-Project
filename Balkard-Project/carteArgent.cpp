@@ -46,7 +46,7 @@ void carteArgent::afficher() {
 	//cout << this->valeur << " " << this->getNom() << endl;
 
 }
-void carteArgent::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
+void carteArgent::sfafficher(sf::RenderWindow* window, int xpos,int deck/*, int ypos*/)
 {
 	sf::RectangleShape cardHead(sf::Vector2f(250.0f, 50.0f));
 	sf::RectangleShape cardBody(sf::Vector2f(250.0f, 200.0f));
