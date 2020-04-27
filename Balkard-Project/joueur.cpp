@@ -605,12 +605,32 @@ void joueur::setOrigine(sf::Text& text)
 void joueur::shopping(joueur* cible, deckShop* deckshop, sf::RenderWindow* window) {
 	window->clear();
 
+	sf::Text argt;
+	argt.setString(to_string(this->getArgent()));
+	sf::Text preArgt;
+	preArgt.setString("BalkCoin :");
+	syntaxeCarte(argt);
+	argt.setFillColor(sf::Color::White);
+	argt.setCharacterSize(25);
+	setOrigine(argt);
+
+	syntaxeCarte(preArgt);
+	preArgt.setFillColor(sf::Color::White);
+	preArgt.setCharacterSize(25);
+	setOrigine(preArgt);
+
+	preArgt.setPosition(window->getSize().x / 5, 100.f);
+	argt.setPosition(preArgt.getPosition().x + 200.f, preArgt.getPosition().y);
+	window->draw(preArgt);
+	window->draw(argt);
+
 	deckshop->checkTaille();
-	texteCombat* txt = new texteCombat;
+	//texteCombat* txt = new texteCombat;
 	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
-	txt->shopTxt(this, window);
+	//txt->shopTxt(this, window);
 	this->joueurShop(deckshop);
 	this->joueurAcheterCarte(cible, deckshop, window);
+
 	window->display();
 }
 //CHOIX DE LA CARTE A JOUER
@@ -656,6 +676,7 @@ void joueur::joueurAcheterCarte(joueur* cible, deckShop* deckshop, sf::RenderWin
 	}
 	this->main.clear();
 
+
 }
 
 //MISE EN PLACE DES EFFETS DES POTIONS
@@ -700,6 +721,7 @@ void joueur::joueurShop(deckShop* deckshop) {
 			cout << "Il n\'y a plus de cartes !" << endl;
 		}
 	}
+
 }
 
 void joueur::reset(joueur* cible) {
