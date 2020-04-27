@@ -53,7 +53,7 @@ void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::Ren
 		//cible->perso->afficher();
 
 		cout << "TOUR " << tour << endl;
-		this->initierCombat(cible, deck, window);
+		this->initierCombat(cible, deck, window, deckshop, tour);
 		tour++;
 		printf("\n\n\n");
 		system("cls");
@@ -67,14 +67,14 @@ void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::Ren
 
 	window->clear();
 	if (this->perso->personnage::getVie() <= 0 && cible->perso->personnage::getVie() <= 0) {
-		cout << "vous vous etes entretuez" << endl;
+		cout << "vous vous etes entretuer" << endl;
 		this->reset(cible);
 	}else if (this->perso->personnage::getVie() <= 0) {
 		cout << "vous avez perdu" << endl;
 		this->reset(cible);
-	}else if(cible->perso->personnage::getVie() <= 0){
-		this->reset(cible);
-		shopping(cible, deckshop, window);
+	//}else if(cible->perso->personnage::getVie() <= 0){
+	//	this->reset(cible);
+	//	shopping(cible, deckshop, window);
 	}
 	
 
@@ -158,7 +158,7 @@ int joueur::jetInitierCombat(sf::RenderWindow* window) {
 	return jetInitiative + this->perso->getInitiative();
 }
 //CHOIX DU JOUEUR QUI ATTAQUE EN PREMIER
-void joueur::initierCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) {
+void joueur::initierCombat(joueur* cible, Deck* deck, sf::RenderWindow* window, deckShop* deckshop, int tour) {
 	debutDeCombat(cible, deck, window);
 	system("cls");
 	this->perso->afficher();
@@ -171,16 +171,16 @@ void joueur::initierCombat(joueur* cible, Deck* deck, sf::RenderWindow* window) 
 		window->clear();
 		cible->attaquer(this, window);
 		window->clear();
-		finDeCombat(cible, deck, window);
+		finDeCombat(cible, deck, window, deckshop, tour);
 	}
 	else {
 		cible->attaquer(this, window);
 		this->attaquer(cible, window);
-		finDeCombat(cible, deck, window);
+		finDeCombat(cible, deck, window, deckshop, tour);
 	}
 }
 //FIN DU COMBAT (AFFICHAGE DES JOUEUR ET CARTE RITUEL(pas mis en place))
-void joueur::finDeCombat(joueur* cible, Deck* deck,  sf::RenderWindow* window) {
+void joueur::finDeCombat(joueur* cible, Deck* deck,  sf::RenderWindow* window, deckShop* deckshop, int tour) {
 	cout << "\n End Phase" << endl;
 	//Affichage de la main à la fin du tour
 	/*
@@ -205,6 +205,11 @@ void joueur::finDeCombat(joueur* cible, Deck* deck,  sf::RenderWindow* window) {
 
 	cible->perso->afficher();
 	window->clear();
+	if(tour%3 == 0){
+		this->shopping(cible, deckshop, window);
+		cible->shopping(cible, deckshop, window);
+		window->clear();
+	}
 	//affichagePlateau(cible, window);
 
 	//Sleep(2000);
@@ -598,13 +603,14 @@ void joueur::setOrigine(sf::Text& text)
 }*/
 
 void joueur::shopping(joueur* cible, deckShop* deckshop, sf::RenderWindow* window) {
+	window->clear();
+
 	deckshop->checkTaille();
 	texteCombat* txt = new texteCombat;
 	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
 	txt->shopTxt(this, window);
 	this->joueurShop(deckshop);
 	this->joueurAcheterCarte(cible, deckshop, window);
-	window->clear();
 	window->display();
 }
 //CHOIX DE LA CARTE A JOUER

@@ -42,7 +42,12 @@ void texteCombat::preparationAtkTxt(joueur* player, sf::RenderWindow* window) {
 	syntaxeCartetxt(flavorText);
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
-	flavorText.setPosition(window->getSize().x / 5, 150.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 150.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 150.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	window->draw(flavorText);
 	window->draw(playerName);
@@ -62,7 +67,12 @@ void texteCombat::jetAtkTxt(joueur* player, sf::RenderWindow* window, int jetAtt
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
 	setOriginetxt(jet);
-	flavorText.setPosition(window->getSize().x / 5, 200.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 200.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 200.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	jet.setPosition(flavorText.getPosition().x + 175.f, flavorText.getPosition().y);
 	window->draw(flavorText);
@@ -79,7 +89,12 @@ void texteCombat::atkCritTxt(joueur* player, sf::RenderWindow* window) {
 	syntaxeCartetxt(flavorText);
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
-	flavorText.setPosition(window->getSize().x / 5, 250.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 250.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 250.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	window->draw(flavorText);
 	window->draw(playerName);
@@ -94,7 +109,12 @@ void texteCombat::atkFailTxt(joueur* player, sf::RenderWindow* window) {
 	syntaxeCartetxt(flavorText);
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
-	flavorText.setPosition(window->getSize().x / 5, 250.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 250.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 250.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	window->draw(flavorText);
 	window->draw(playerName);
@@ -113,7 +133,12 @@ void texteCombat::jetEsquiveTxt(joueur* player, sf::RenderWindow* window, int je
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
 	setOriginetxt(jet);
-	flavorText.setPosition(window->getSize().x / 5, 300.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 300.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 300.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	//playerName.setPosition(window->getSize().x / 10, 300.f);
 	//flavorText.setPosition(playerName.getPosition().x + 300.f, playerName.getPosition().y);
@@ -132,7 +157,12 @@ void texteCombat::esquiveTxt(joueur* player, sf::RenderWindow* window) {
 	syntaxeCartetxt(flavorText);
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
-	flavorText.setPosition(window->getSize().x / 5, 350.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 350.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 350.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	window->draw(flavorText);
 	window->draw(playerName);
@@ -151,7 +181,12 @@ void texteCombat::jetInitiaTxt(joueur* player, sf::RenderWindow* window, int jet
 	setOriginetxt(playerName);
 	setOriginetxt(flavorText);
 	setOriginetxt(jet);
-	flavorText.setPosition(window->getSize().x / 5, 100.f);
+	if (player->getPerso()->getNom() != "DHB") {
+		flavorText.setPosition(window->getSize().x / 1.2, 100.f);
+	}
+	else {
+		flavorText.setPosition(window->getSize().x / 5, 100.f);
+	}
 	playerName.setPosition(flavorText.getPosition().x - 200.f, flavorText.getPosition().y);
 	jet.setPosition(flavorText.getPosition().x + 175.f, flavorText.getPosition().y);
 	window->draw(flavorText);

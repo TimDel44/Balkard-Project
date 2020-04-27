@@ -63,8 +63,8 @@ void carteArgent::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	type.setString("Argent");
 	//stat.setString(this->getValeur());
 	//preStat.setString("stat :");
-	niveau.setString(" BalkCoin");
-	preNiveau.setString(a.str());
+	niveau.setString(a.str());
+	preNiveau.setString("BalkCoin");
 
 	carte::syntaxeCarte(type);
 	type.setCharacterSize(25);

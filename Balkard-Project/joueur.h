@@ -60,10 +60,10 @@ public:
 	void attaquer(joueur*, sf::RenderWindow*);
 	void subir(int degats, sf::RenderWindow*);
 	int jetInitierCombat(sf::RenderWindow*);
-	void initierCombat(joueur*, Deck*, sf::RenderWindow*);
+	void initierCombat(joueur*, Deck*, sf::RenderWindow*, deckShop*, int);
 
 	void clear();
-	void finDeCombat(joueur*, Deck*, sf::RenderWindow*);
+	void finDeCombat(joueur*, Deck*, sf::RenderWindow*, deckShop*, int);
 	void debutDeCombat(joueur*, Deck*, sf::RenderWindow*);
 
 	void joueurPiocher(Deck* deck);
