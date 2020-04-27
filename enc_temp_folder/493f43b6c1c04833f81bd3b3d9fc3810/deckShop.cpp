@@ -17,6 +17,10 @@
 deckShop::deckShop()
 {
     string objet[7] = { "Potion","Elixir","Pieces","Armure","Bottes","Arme","Talisman" };
+    //string stat[5] = { "Vie", "Attaque", "Defense", "Esquive"/*,"Percept\."*/ };
+    //string niveau[3] = { "I", "II", "III" };
+    //string materiauArmure[3] = { "Cuir", "Fer", "Or" };
+    //string materiauArme[3] = { "Bois","Fer","Or" };
     int a;
     int s;
     int i;
@@ -27,7 +31,7 @@ deckShop::deckShop()
 
     //CARTE ELIXIR
     cartes.push_back(new carteElixir(objet[1], "Graal", l, 4, 0, c));
-    cartes.push_back(new carteElixir(objet[1], "Green Ice Tea", l, 4, 2, c));
+    cartes.push_back(new carteElixir(objet[1], "Riz Dinde", l, 4, 1, c));
     cartes.push_back(new carteElixir(objet[1], "Evian", l, 0, 0, c));
     cartes.push_back(new carteElixir(objet[1], "Nuka Cola", l, 4, 3, c));
 
@@ -36,7 +40,7 @@ deckShop::deckShop()
     cartes.push_back(new carteArmure(objet[3], "Le scaphandre", l, 3, 2, c));
     cartes.push_back(new carteArmure(objet[3], "Mjolnir MK\.VI", l, 3, 2, c));
 
-    cartes.push_back(new carteBotte(objet[4], "Tongs", l, 0, 2,c));
+    cartes.push_back(new carteBotte(objet[4], "", l, 4, 2,c));
 
     //CARTE ARME
     cartes.push_back(new carteArme(objet[5], "LE baton", l, 0, 1,c));
