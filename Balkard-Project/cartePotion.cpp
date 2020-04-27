@@ -39,7 +39,7 @@ void cartePotion::afficher()
 	//cout << this->getNom() << this->nomStat << this->niveau << endl;
 }
 
-void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
+void cartePotion::sfafficher(sf::RenderWindow* window, int xpos, int deck/*, int ypos*/)
 {
 	sf::RectangleShape cardHead(sf::Vector2f(250.0f, 50.0f));
 	sf::RectangleShape cardBody(sf::Vector2f(250.0f, 200.0f));
@@ -49,8 +49,7 @@ void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	//sf::Text preStat;
 	sf::Text niveau;
 	sf::Text preNiveau;
-	sf::Text preCost;
-	sf::Text cost;
+	
 
 	type.setString("Potion");
 	stat.setString(this->getNomStat());
@@ -58,8 +57,7 @@ void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	niveau.setString(this->getNiveau());
 	preNiveau.setString("niveau :");
 
-	cost.setString(std::to_string(this->getCost()));
-	preCost.setString("prix :");
+
 
 	carte::syntaxeCarte(type);
 	type.setCharacterSize(25);
@@ -69,11 +67,6 @@ void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	//carte::setOrigine(preStat);
 	carte::syntaxeCarte(stat);
 	carte::setOrigine(stat);
-
-	carte::syntaxeCarte(preCost);
-	carte::setOrigine(preCost);
-	carte::syntaxeCarte(cost);
-	carte::setOrigine(cost);
 
 	carte::syntaxeCarte(preNiveau);
 	carte::setOrigine(preNiveau);
@@ -91,9 +84,6 @@ void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	preNiveau.setPosition(cardBody.getPosition().x, cardBody.getPosition().y + 20.f);
 	niveau.setPosition(preNiveau.getPosition().x + 60.f, preNiveau.getPosition().y);
 
-	preCost.setPosition(cardBody.getPosition().x, cardBody.getPosition().y + 45.f);
-	cost.setPosition(preCost.getPosition().x +60.f, preCost.getPosition().y);
-
 	window->draw(cardHead);
 	window->draw(cardBody);
 
@@ -102,8 +92,21 @@ void cartePotion::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	window->draw(stat);
 	window->draw(preNiveau);
 	window->draw(niveau);
-	window->draw(preCost);
-	window->draw(cost);
+
+	if (deck == 1) {
+		sf::Text preCost;
+		sf::Text cost;
+		cost.setString(std::to_string(this->getCost()));
+		preCost.setString("prix :");
+		carte::syntaxeCarte(preCost);
+		carte::setOrigine(preCost);
+		carte::syntaxeCarte(cost);
+		carte::setOrigine(cost);
+		preCost.setPosition(cardBody.getPosition().x, cardBody.getPosition().y + 45.f);
+		cost.setPosition(preCost.getPosition().x + 60.f, preCost.getPosition().y);
+		window->draw(preCost);
+		window->draw(cost);
+	}
 }
 
 /*void cartePotion::setOrigine(sf::Text* text)

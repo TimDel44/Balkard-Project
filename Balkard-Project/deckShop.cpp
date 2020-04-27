@@ -21,15 +21,16 @@ deckShop::deckShop()
     int s;
     int i;
     int b;
-    int c=10;
+    int c=40;
     string l = "special";
     this->cartes;
 
     //CARTE ELIXIR
     cartes.push_back(new carteElixir(objet[1], "Graal", l, 4, 0, c));
-    cartes.push_back(new carteElixir(objet[1], "Green Ice Tea", l, 4, 2, c));
+    cartes.push_back(new carteElixir(objet[1], "Green Ice Tea", l, 4, 1, c));
     cartes.push_back(new carteElixir(objet[1], "Evian", l, 0, 0, c));
-    cartes.push_back(new carteElixir(objet[1], "Nuka Cola", l, 4, 3, c));
+    cartes.push_back(new carteElixir(objet[1], "Nuka Cola", l, 2, 3, c));
+    cartes.push_back(new carteElixir(objet[1], "Shrek's juice", l, 5, 2, c));
 
     //CARTE ARMURE et BOTTE
     cartes.push_back(new carteArmure(objet[3], "L'exosquelette", l, 5, 2,c));
@@ -40,8 +41,10 @@ deckShop::deckShop()
 
     //CARTE ARME
     cartes.push_back(new carteArme(objet[5], "LE baton", l, 0, 1,c));
-    cartes.push_back(new carteArme(objet[5], "Damocles", l, 6, 1, c));
+    cartes.push_back(new carteArme(objet[5], "Damocles", l, 5, 1, c));
     cartes.push_back(new carteArme(objet[5], "Excalibur", l, 6, 1, c));
+    cartes.push_back(new carteArme(objet[5], "Le tesson du Capitaine", l, 2, 1, c));
+    cartes.push_back(new carteArme(objet[5], "CURSED Magnum", l, -2, 1, c));
 }
 void deckShop::melangerDeck() {
     random_shuffle(this->cartes.begin(), this->cartes.end());
@@ -50,7 +53,7 @@ void deckShop::melangerDeck() {
 void deckShop::afficherDeck(sf::RenderWindow* window) {
     int i;
     for (i = 0; i < this->cartes.size(); i++) {
-        cartes[i]->sfafficher(window, i * 100);
+        cartes[i]->sfafficher(window, i * 100,0);
     }
     cartes.size();
     cout << endl;

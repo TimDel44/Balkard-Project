@@ -92,7 +92,7 @@ void Deck::melangerDeck() {
 void Deck::afficherDeck(sf::RenderWindow* window) {
     int i;
     for (i = 0; i < this->cartes.size(); i++) {
-        cartes[i]->sfafficher(window, i*100);
+        cartes[i]->sfafficher(window, i*100,0);
     }
     cartes.size();
     cout << endl;

@@ -15,7 +15,7 @@ public:
 
 	carteArgent(string nom, int cost);
 	virtual void afficher();
-	virtual void sfafficher(sf::RenderWindow*, int);
+	virtual void sfafficher(sf::RenderWindow*, int,int);
 
 
 };

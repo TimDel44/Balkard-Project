@@ -40,7 +40,7 @@ void carteSort::afficher()
 	//cout << this->getNom() << this->nomStat << this->niveau << endl;
 }
 
-void carteSort::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
+void carteSort::sfafficher(sf::RenderWindow* window, int xpos, int deck/*, int ypos*/)
 {
 	sf::RectangleShape cardHead(sf::Vector2f(250.0f, 50.0f));
 	sf::RectangleShape cardBody(sf::Vector2f(250.0f, 200.0f));

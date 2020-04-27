@@ -38,7 +38,7 @@ void carte::afficher()
 	cout << "	-------------------" << endl;
 	*/
 }
-void carte::sfafficher(sf::RenderWindow*, int) {}
+void carte::sfafficher(sf::RenderWindow*, int,int) {}
 
 void carte::sfCreationCarte(sf::RectangleShape &cardHead, sf::RectangleShape &cardBody) 
 {
