@@ -42,8 +42,9 @@ void joueur::afficherJoueur() {
 }
 //BOUCLE DE COMBAT
 void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::RenderWindow* window) {
+	int tour = 1;
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
-		int tour=1;
+		
 		affichagePlateau(cible, window);
 		//this->perso->afficher();
 
