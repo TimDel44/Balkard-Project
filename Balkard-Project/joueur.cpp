@@ -43,7 +43,7 @@ void joueur::afficherJoueur() {
 //BOUCLE DE COMBAT
 void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::RenderWindow* window) {
 	while (this->perso->personnage::getVie() > 0 and cible->perso->personnage::getVie() > 0) {
-
+		int tour=1;
 		affichagePlateau(cible, window);
 		//this->perso->afficher();
 
@@ -51,9 +51,9 @@ void joueur::joueurCombat(joueur* cible, Deck* deck, deckShop* deckshop, sf::Ren
 
 		//cible->perso->afficher();
 
-
+		cout << "TOUR " << tour << endl;
 		this->initierCombat(cible, deck, window);
-
+		tour++;
 		printf("\n\n\n");
 		system("cls");
 	}
@@ -265,24 +265,53 @@ void joueur::joueurJouerCarte(joueur* cible, Deck* deck, sf::RenderWindow* windo
 
 //MISE EN PLACE DES EFFETS DES POTIONS
 void joueur::joueurActiverCarte(joueur* cible, Deck* deck, int choix) {
-	if (this->main[choix-1]->getStatistique() == 0) {
-		this->perso->setVie(this->perso->getVie() + this->main[choix-1]->getAlteration() * 10);
-		cout << "vous vous etes soigne de " << this->main[choix - 1]->getAlteration()*10 << " Points de vie !" << endl;
-	}else if (this->main[choix - 1]->getStatistique() == 1) {
-		this->perso->setAttaque(this->perso->getAttaque() + this->main[choix - 1]->getAlteration() * 5);
-		cout << "vous boostez votre attaque de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
-	}else if (this->main[choix - 1]->getStatistique() == 2) {
-		this->perso->setDefense(this->perso->getDefense() + this->main[choix - 1]->getAlteration() * 5);
-		cout << "vous augmentez votre defense de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
-	}else if (this->main[choix - 1]->getStatistique() == 3) {
-		this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 5);
-		cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive !" << endl;
-	}else if (this->main[choix - 1]->getStatistique() == 4) {
-		this->perso->setPerception(this->perso->getPerception() + this->main[choix - 1]->getAlteration() - 2);
-		cout << "vous pouvez piocher " << this->perso->getPerception() << " cartes !" << endl;
-	}else if (this->main[choix - 1]->getStatistique() == 6) {
-		this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
-		cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;
+	if (this->main[choix-1]->getNom() == "Sort") {
+		if (this->main[choix - 1]->getStatistique() == 0) {
+			cible->perso->setVie(cible->perso->getVie() - this->main[choix - 1]->getAlteration() * 10);
+			cout << "vous infligez " << this->main[choix - 1]->getAlteration() * 10 << " Points de degats a " <<cible->perso->getNom()<<" !"<< endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 1) {
+			cible->perso->setAttaque(cible->perso->getAttaque() - this->main[choix - 1]->getAlteration() * 5);
+			cout << "vous baissez l'attaque de " << cible->perso->getNom() << " de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 2) {
+			cible->perso->setDefense(cible->perso->getDefense() - this->main[choix - 1]->getAlteration() * 5);
+			cout << "vous diminuez la defense de " << cible->perso->getNom() << " de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 3) {
+			cible->perso->setEsquive(cible->perso->getEsquive() - this->main[choix - 1]->getAlteration() * 5);
+			cout << cible->perso->getNom() << " perd " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive !" << endl;
+		}
+	}
+	else if (this->main[choix - 1]->getNom() == "Argent") {
+		this->setArgent(this->getArgent() + this->main[choix - 1]->getCost());
+		cout << "vous obtenez " << this->main[choix - 1]->getCost() << " BalkCoins !" << endl;
+	}
+	else {
+		if (this->main[choix - 1]->getStatistique() == 0) {
+			this->perso->setVie(this->perso->getVie() + this->main[choix - 1]->getAlteration() * 10);
+			cout << "vous vous etes soigne de " << this->main[choix - 1]->getAlteration() * 10 << " Points de vie !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 1) {
+			this->perso->setAttaque(this->perso->getAttaque() + this->main[choix - 1]->getAlteration() * 5);
+			cout << "vous boostez votre attaque de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 2) {
+			this->perso->setDefense(this->perso->getDefense() + this->main[choix - 1]->getAlteration() * 5);
+			cout << "vous augmentez votre defense de " << this->main[choix - 1]->getAlteration() * 5 << " !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 3) {
+			this->perso->setEsquive(this->perso->getEsquive() + this->main[choix - 1]->getAlteration() * 5);
+			cout << "vous gagnez " << this->main[choix - 1]->getAlteration() * 5 << " points d'esquive !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 4) {
+			this->perso->setPerception(this->perso->getPerception() + this->main[choix - 1]->getAlteration() - 2);
+			cout << "vous pouvez piocher " << this->perso->getPerception() << " cartes !" << endl;
+		}
+		else if (this->main[choix - 1]->getStatistique() == 6) {
+			this->perso->setPA(this->perso->getPA() + this->main[choix - 1]->getAlteration() * 1);
+			cout << "vous obtenez " << this->main[choix - 1]->getAlteration() * 1 << " PA supplémentaire(s) !" << endl;
+		}
 	}
 }
 
@@ -569,12 +598,12 @@ void joueur::setOrigine(sf::Text& text)
 
 void joueur::shopping(joueur* cible, deckShop* deckshop, sf::RenderWindow* window) {
 	deckshop->checkTaille();
-	//texteCombat* txt = new texteCombat;
+	texteCombat* txt = new texteCombat;
 	affichageJoueur(this, window->getSize().x / 2, (window->getSize().y / 2) - 300.f, window);
-	//txt->shopTxt(this, window);
+	txt->shopTxt(this, window);
 	this->joueurShop(deckshop);
 	this->joueurAcheterCarte(cible, deckshop, window);
-	//window->clear();
+	window->clear();
 	window->display();
 }
 //CHOIX DE LA CARTE A JOUER

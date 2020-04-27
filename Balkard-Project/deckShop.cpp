@@ -26,18 +26,19 @@ deckShop::deckShop()
     int i;
     int b;
     int c=10;
-    string l = "legendaire";
+    string l = "special";
     this->cartes;
 
     //CARTE ELIXIR
     cartes.push_back(new carteElixir(objet[1], "Graal", l, 4, 0, c));
     cartes.push_back(new carteElixir(objet[1], "Riz Dinde", l, 4, 1, c));
     cartes.push_back(new carteElixir(objet[1], "Evian", l, 0, 0, c));
-    cartes.push_back(new carteElixir(objet[1], "4", l, 4, 3, c));
+    cartes.push_back(new carteElixir(objet[1], "Nuka Cola", l, 4, 3, c));
 
     //CARTE ARMURE et BOTTE
     cartes.push_back(new carteArmure(objet[3], "L'exosquelette", l, 5, 2,c));
     cartes.push_back(new carteArmure(objet[3], "Le scaphandre", l, 3, 2, c));
+    cartes.push_back(new carteArmure(objet[3], "Mjolnir MK\.VI", l, 3, 2, c));
 
     cartes.push_back(new carteBotte(objet[4], "", l, 4, 2,c));
 

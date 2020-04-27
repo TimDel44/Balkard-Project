@@ -20,7 +20,7 @@ using namespace std;
 	SetConsoleTextAttribute(H, couleurDeFond * 16 + couleurDuTexte);
 }*/
 
-carteArgent::carteArgent(string nom, int valeur) :carte(nom), valeur(valeur) {}
+carteArgent::carteArgent(string nom, int c) :carte(nom), cost(c) {}
 
 void carteArgent::afficher() {
 	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
@@ -30,7 +30,7 @@ void carteArgent::afficher() {
 	printf("	|                 |\n");
 	printf("	|                 |\n");
 	printf("	|                 |\n");
-	printf("	| valeur : %-6d |\n", this->getValeur());
+	printf("	| valeur : %-6d |\n", this->getCost());
 	printf("	|                 |\n");
 	printf("	|                 |\n");
 	printf("	|                 |\n");
@@ -58,7 +58,7 @@ void carteArgent::sfafficher(sf::RenderWindow* window, int xpos/*, int ypos*/)
 	sf::Text preNiveau;
 
 	ostringstream a;
-	a << this->getValeur();
+	a << this->getCost();
 
 	type.setString("Argent");
 	//stat.setString(this->getValeur());
