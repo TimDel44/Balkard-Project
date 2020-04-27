@@ -7,15 +7,15 @@ using namespace std;
 class carteArgent : public carte
 {
 private:
-	int valeur;
+	int cost;
 
 public:
-	int getValeur() { return this->valeur; }
-	int setValeur(int valeur) { this->valeur = valeur; }
+	int getCost() { return this->cost; }
+	int setCost(int c) { this->cost = c; }
 
-	carteArgent(string nom, int valeur);
+	carteArgent(string nom, int cost);
 	virtual void afficher();
-
+	virtual void sfafficher(sf::RenderWindow*, int);
 
 
 };

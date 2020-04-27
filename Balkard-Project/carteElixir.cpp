@@ -16,7 +16,7 @@
 
 using namespace std;
 
-carteElixir::carteElixir(string nom, string nomStat, string niveau, int a, int s) :carte(nom),nomStat(nomStat), niveau(niveau), alteration(a), statistique(s) {}
+carteElixir::carteElixir(string nom, string nomStat, string niveau, int a, int s, int c) :carte(nom),nomStat(nomStat), niveau(niveau), alteration(a), statistique(s), cost(c) {}
 
 void carteElixir::afficher()
 {

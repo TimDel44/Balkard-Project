@@ -19,6 +19,7 @@
     <ClCompile Include="carteBotte.cpp" />
     <ClCompile Include="miseEnPage.cpp" />
     <ClCompile Include="texteCombat.cpp" />
+    <ClCompile Include="deckShop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="carte.h" />
@@ -38,5 +39,6 @@
     <ClInclude Include="carteBotte.h" />
     <ClInclude Include="miseEnPage.h" />
     <ClInclude Include="texteCombat.h" />
+    <ClInclude Include="deckShop.h" />
   </ItemGroup>
 </Project>

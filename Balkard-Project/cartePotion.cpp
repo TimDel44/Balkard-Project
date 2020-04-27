@@ -1,4 +1,3 @@
-
 #include "cartePotion.h"
 #include "carte.h"
 #include <iostream>
@@ -20,7 +19,7 @@
 }*/
 using namespace std;
 
-cartePotion::cartePotion(string nom, string nomStat, string niveau, int a, int s):carte(nom),nomStat(nomStat),niveau(niveau), alteration(a), statistique(s){}
+cartePotion::cartePotion(string nom, string nomStat, string niveau, int a, int s, int c):carte(nom),nomStat(nomStat),niveau(niveau), alteration(a), statistique(s), cost(c){}
 
 void cartePotion::afficher()
 {

@@ -26,6 +26,7 @@
 #include "carteArgent.h"
 #include "joueur.h"
 #include "Deck.h"
+#include "deckShop.h"
 #include "Titre.h"
 #include "graphics.h"
 #include "miseEnPage.h"
@@ -46,6 +47,8 @@ int main()
 
     Deck* deck = new Deck;
     deck->melangerDeck();
+    deckShop* deckshop = new deckShop;
+    deckshop->melangerDeck();
     string nom = "DHB";
 
     personnage* perso1 = new personnage(nom);
@@ -104,14 +107,28 @@ int main()
         // <- mettre une animation de disparition pour l'écran de titre
         mep->getWindow()->clear();
         //mep->affichagePlateau(player1, player2);
-        player1->joueurCombat(player2, deck, mep->getWindow());
+        player1->joueurCombat(player2, deck, deckshop, mep->getWindow());
+        cout << "Continuer a combattre ?(y/n)" << endl;
+        string continu;
+        cin >> continu;
+        if (continu == "y" || continu == "Y") {
+            mep->getWindow()->clear();
+            player1->joueurCombat(player2, deck, deckshop, mep->getWindow());
+        }
+        else if (continu == "n" || continu == "N") {
+            Sleep(5000);
+        }
+        else {
+            cout << "Entrez une reponse valide !" << endl;
+        }
+
         //mep->getWindow()->clear();
    //     deck->afficherDeck(mep->getWindow());
         //mep->affichageNom(window, nom);
         //window.draw(playercard);
         //mep->getWindow()->display();
         //player1->joueurCombat(player2, deck, mep->getWindow());
-        Sleep(5000);
+        
     }
 
 }

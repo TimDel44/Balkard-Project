@@ -13,6 +13,7 @@
 #include <ctime>
 #include "personnage.h"
 #include "Deck.h"
+#include "deckShop.h"
 //#include "miseEnPage.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
@@ -29,6 +30,7 @@ private:
 	int possedeRituel;
 	int possedeItem;
 	vector<carte*> main;
+	vector<carte*> shop;
 	sf::Font* fontJoueur;
   
 public:
@@ -40,10 +42,11 @@ public:
 	int getPossedeRituel() { return this->possedeRituel; }
 	int getPossedeItem() { return this->possedeSort; }
 	vector<carte*> getMain() { return this->main; }
+	vector<carte*> getShop() { return this->shop; }
 	personnage* getPerso() { return this->perso;  }
 	sf::Font* getFontJoueur() { return this->fontJoueur; }
 
-	void setArgent() { this->argent = argent; }
+	void setArgent(int argent) { this->argent = argent; }
 	void setActif() { this->actif = actif; }
 	void setPersoVivant() { this->persoVivant = persoVivant; }
 	void setPersonnage(personnage* perso) { this->perso = perso; }
@@ -53,7 +56,7 @@ public:
 
 	joueur(personnage* perso);
 	void afficherJoueur();
-	void joueurCombat(joueur* cible, Deck*, sf::RenderWindow*);
+	void joueurCombat(joueur* cible, Deck*, deckShop*, sf::RenderWindow*);
 	void attaquer(joueur*, sf::RenderWindow*);
 	void subir(int degats, sf::RenderWindow*);
 	int jetInitierCombat(sf::RenderWindow*);
@@ -69,9 +72,17 @@ public:
 	//Méthode non retenu de choix de carte
 	//void choisirCarte();
 	//void afficherMain();
+
+	void shopping(joueur*, deckShop*,sf::RenderWindow*);
+	void joueurShop(deckShop* deckshop);
+	void joueurAcheterCarte(joueur*, deckShop*, sf::RenderWindow*);
+	void joueurActiverCarteShop(joueur*, deckShop*, int);
+
 	void syntaxeCarte(sf::Text& text);
 	void setOrigine(sf::Text& text);
 	void affichageJoueur(joueur* player, int xpos, int ypos, sf::RenderWindow*);
 	void affichagePlateau(joueur* player2, sf::RenderWindow*);
 	//int fChoix();
+
+	void reset(joueur*);
 };
