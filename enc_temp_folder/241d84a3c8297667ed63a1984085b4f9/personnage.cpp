@@ -17,7 +17,7 @@ using namespace std;
 personnage::personnage(string nom)
 {
 	this->nom = nom;
-	this->vie = 100;
+	this->vie = 5;
 	this->attaque = 5;
 	this->defense = 5;
 	this->esquive = 2;

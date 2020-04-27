@@ -72,6 +72,7 @@ Deck::Deck()
     //CARTE SORT   
     for (a = 0; a < 3; a++) {
         cartes.push_back(new carteSort(objet[6], "Le feu ca brule", niveau[a], a+1, 0, 0));
+        cartes.push_back(new carteSort(objet[6], "L'alcool ca saoule", niveau[a], a + 1, 1, 0));
         cartes.push_back(new carteSort(objet[6], "L'eau ca mouille", niveau[a], a + 1, 2, 0));
         cartes.push_back(new carteSort(objet[6], "L'huile ca glisse", niveau[a], a + 1, 3, 0));
     }
